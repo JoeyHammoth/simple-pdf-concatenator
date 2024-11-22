@@ -1,6 +1,7 @@
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
+import org.apache.pdfbox.pdmodel.PDPageTree;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,31 +11,51 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        String inputPdf = "./PDFs/test.pdf";  // Path to the input PDF
-        String outputPdf = "./Output/output.pdf"; // Path to the reversed PDF
+        String inputPdfEvenPages = "./PDFs/even.pdf"; // Even pages PDF
+        String inputPdfOddPages = "./PDFs/odd.pdf"; // Odd pages PDF
+        String outputPdf = "./Output/output.pdf"; // Output merged PDF
 
-        try (PDDocument document = PDDocument.load(new File(inputPdf))) {
-            System.out.println("PDF loaded successfully!");
+        try {
+            // Load the even-pages PDF
+            PDDocument evenPdfDoc = PDDocument.load(new File(inputPdfEvenPages));
+            // Load the odd-pages PDF
+            PDDocument oddPdfDoc = PDDocument.load(new File(inputPdfOddPages));
 
-            // Step 1: Convert PDPageTree to a List<PDPage>
-            List<PDPage> pageList = new ArrayList<>();
-            for (PDPage page : document.getPages()) {
-                pageList.add(page);
+            // Create a new PDF document to merge pages into
+            PDDocument mergedPdfDoc = new PDDocument();
+
+
+            PDPageTree evenPages = evenPdfDoc.getPages();
+            int evenPageCount = evenPages.getCount();
+
+            PDPageTree oddPages = oddPdfDoc.getPages();
+            int oddPageCount = oddPages.getCount();
+
+            int totalPageCount = evenPageCount + oddPageCount;
+            int oddPageCounter = 0;
+            int evenPageCounter = 0;
+            for (int i = 1; i <= totalPageCount; i++) {
+                if (i % 2 == 0) {
+                    PDPage page = evenPages.get(evenPageCounter);
+                    mergedPdfDoc.addPage(page);
+                    evenPageCounter++;
+                } else {
+                    PDPage page = oddPages.get(oddPageCounter);
+                    mergedPdfDoc.addPage(page);
+                    oddPageCounter++;
+                }
             }
 
-            // Step 2: Create a new document and add pages in reverse order
-            PDDocument reversedDocument = new PDDocument();
-            for (int i = pageList.size() - 1; i >= 0; i--) {
-                reversedDocument.addPage(pageList.get(i));
-            }
+            // Save the merged document
+            mergedPdfDoc.save(outputPdf);
+            mergedPdfDoc.close();
+            evenPdfDoc.close();
+            oddPdfDoc.close();
 
-            // Step 3: Save the reversed PDF
-            reversedDocument.save(outputPdf);
-            reversedDocument.close();
+            System.out.println("PDFs merged successfully!");
 
-            System.out.println("Reversed PDF saved successfully at: " + outputPdf);
         } catch (IOException e) {
-            System.err.println("Error occurred while reversing PDF pages: " + e.getMessage());
+            System.err.println("Error occurred while merging PDFs: " + e.getMessage());
         }
     }
 }
