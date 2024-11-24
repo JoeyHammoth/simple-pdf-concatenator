@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a7ebb9ba-20ef-490d-b9d0-05e938852f47" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Output/output.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PDFs/test.pdf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,14 +24,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/Concat.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Main.java" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Merger.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Reverser.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2pD9unPsUGKC4B4kgN2PPIABzy7" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -46,6 +47,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "extract.method.default.visibility": "private",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -57,10 +59,17 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.externalTools",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.1-openjdk-21.0.1-249ae16d76d6-69315bf7" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -70,6 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1732290004051</updated>
       <workItem from="1732290005435" duration="3795000" />
+      <workItem from="1732462394997" duration="1261000" />
     </task>
     <servers />
   </component>
@@ -81,7 +91,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="NONE" type="java-line">
           <url>file://$PROJECT_DIR$/src/Main.java</url>
-          <line>59</line>
+          <line>16</line>
           <log-expression expression="&#10;        // Specify the destination file&#10;        pdfMerger.setDestinationFileName(outputPdf);&#10;&#10;        try {&#10;            // Merge the PDFs&#10;            pdfMerger.mergeDocuments(null);&#10;            System.out.println(&quot;PDF files merged successfully!&quot;);&#10;        } catch (IOException e) {&#10;            System.err.println(&quot;Error occurred while merging PDFs: &quot; + e.getMessage());" language="JAVA" />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
