@@ -46,6 +46,7 @@ public class MainMenu implements Interactable{
             @Override
             public void actionPerformed(ActionEvent e) {
                 MergeMenu mergeMenu = new MergeMenu(frame);
+                mergeMenu.createMenu();
             }
         });
 

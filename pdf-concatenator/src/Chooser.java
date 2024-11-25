@@ -15,7 +15,7 @@ public class Chooser {
     public void createChooser(int x1, int y1, int x2, int y2, String text) {
         // Initialize the open button
         openButton = new JButton(text);
-        openButton.setBounds(x1, y1, 120, 30);
+        openButton.setBounds(x1, y1, 150, 30);
 
         // Initialize the text field to display file path
         filePathField = new JTextField();

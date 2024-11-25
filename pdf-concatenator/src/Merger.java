@@ -9,10 +9,10 @@ public class Merger {
     private String inputPdfEvenPages;
     private String inputPdfOddPages;
     private String outputPdf;
-    public Merger(String inputPdfEvenPages, String inputPdfOddPages, String outputPdf) {
+    public Merger(String inputPdfEvenPages, String inputPdfOddPages, String outputPdf, String name) {
         this.inputPdfEvenPages = inputPdfEvenPages;
         this.inputPdfOddPages = inputPdfOddPages;
-        this.outputPdf = outputPdf;
+        this.outputPdf = outputPdf + "/" + name;
     }
     public void merge() {
         try {

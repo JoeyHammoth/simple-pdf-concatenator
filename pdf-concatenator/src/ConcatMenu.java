@@ -23,9 +23,9 @@ public class ConcatMenu implements Interactable {
         folderChooser = new Chooser(frame, false);
     }
     public void createMenu() {
-        inputChooser1.createChooser(50, 50, 180, 50, "Choose PDF 1");
-        inputChooser2.createChooser(50, 100, 180, 100, "Choose PDF 2");
-        folderChooser.createChooser(50, 150, 180, 150, "Choose Folder");
+        inputChooser1.createChooser(25, 50, 180, 50, "Choose PDF 1");
+        inputChooser2.createChooser(25, 100, 180, 100, "Choose PDF 2");
+        folderChooser.createChooser(25, 150, 180, 150, "Choose Folder");
         con.setBounds(150, 200, 220, 50);
         back.setBounds(150, 300, 220, 50);
         warning.setBounds(150, 250, 220, 50);

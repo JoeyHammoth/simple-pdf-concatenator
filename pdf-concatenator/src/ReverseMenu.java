@@ -20,8 +20,8 @@ public class ReverseMenu implements Interactable {
         outputChooser = new Chooser(frame, false);
     }
     public void createMenu() {
-        inputChooser.createChooser(50, 50, 180, 50, "Choose PDF");
-        outputChooser.createChooser(50, 100, 180, 100, "Choose Folder");
+        inputChooser.createChooser(25, 50, 180, 50, "Choose PDF");
+        outputChooser.createChooser(25, 100, 180, 100, "Choose Folder");
         rev.setBounds(150, 150, 220, 50);
         back.setBounds(150, 250, 220, 50);
         warning.setBounds(150, 200, 220, 50);
