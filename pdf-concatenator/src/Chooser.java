@@ -1,93 +1,52 @@
-import java.io.*;
 import javax.swing.*;
-import java.awt.event.*;
-import javax.swing.filechooser.*;
-public class Chooser extends JFrame implements ActionListener {
-    // Jlabel to show the files user selects
-    static JLabel l;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+public class Chooser {
+    private JFrame frame;
+    private JButton openButton;
+    private JTextField filePathField;
+    private String filePath;
+    public Chooser(JFrame frame) {
+        this.frame = frame;
+    }
+    public void createChooser() {
+        // Initialize the open button
+        openButton = new JButton("Open File");
 
-    // a default constructor
-    Chooser()
-    {
+        // Initialize the text field to display file path
+        filePathField = new JTextField(30);
+        filePathField.setEditable(false); // Make it non-editable
+
+        // Add an action listener to the open button
+        openButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Open the file chooser
+                JFileChooser fileChooser = new JFileChooser();
+                int result = fileChooser.showOpenDialog(frame);
+
+                // If the user selects a file
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    // Get the file's path
+                    filePath = fileChooser.getSelectedFile().getAbsolutePath();
+
+                    // Set the file path to the text field
+                    filePathField.setText(filePath);
+                }
+            }
+        });
+
+        // Add components to the frame
+        frame.add(openButton);
+        frame.add(filePathField);
+
+        // Make the frame visible
+        frame.setVisible(true);
     }
 
-    public static void main(String args[])
-    {
-        // frame to contains GUI elements
-        JFrame f = new JFrame("file chooser");
-
-        // set the size of the frame
-        f.setSize(400, 400);
-
-        // set the frame's visibility
-        f.setVisible(true);
-
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        // button to open save dialog
-        JButton button1 = new JButton("save");
-
-        // button to open dialog
-        JButton button2 = new JButton("open");
-
-        // make an object of the class chooser
-        Chooser f1 = new Chooser();
-
-        // add action listener to the button to capture user
-        // response on buttons
-        button1.addActionListener(f1);
-        button2.addActionListener(f1);
-
-        // make a panel to add the buttons and labels
-        JPanel p = new JPanel();
-
-        // add buttons to the frame
-        p.add(button1);
-        p.add(button2);
-
-        // set the label to its initial value
-        l = new JLabel("no file selected");
-
-        // add panel to the frame
-        p.add(l);
-        f.add(p);
-
-        f.show();
-    }
-    public void actionPerformed(ActionEvent evt)
-    {
-        // if the user presses the save button show the save dialog
-        String com = evt.getActionCommand();
-
-        JFileChooser j = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
-        int r;// set the label to the path of the selected file
-// if the user cancelled the operation
-        if (com.equals("save")) {
-            // create an object of JFileChooser class
-
-            // invoke the showsSaveDialog function to show the save dialog
-            r = j.showSaveDialog(null);
-
-            // if the user selects a file
-        }
-
-        // if the user presses the open dialog show the open dialog
-        else {
-            // create an object of JFileChooser class
-
-            // invoke the showsOpenDialog function to show the save dialog
-            r = j.showOpenDialog(null);
-
-            // if the user selects a file
-        }
-        if (r == JFileChooser.APPROVE_OPTION)
-
-        {
-            // set the label to the path of the selected file
-            l.setText(j.getSelectedFile().getAbsolutePath());
-        }
-        // if the user cancelled the operation
-        else
-            l.setText("the user cancelled the operation");
+    // Method to get the file path attribute
+    public String getFilePath() {
+        return filePath;
     }
 }

@@ -1,10 +1,9 @@
-import java.io.*;
 import javax.swing.*;
 
-public class ConcatMenu {
+public class ReverseMenu {
     private JFrame frame;
 
-    public ConcatMenu(JFrame frame) {
+    public ReverseMenu(JFrame frame) {
         this.frame = frame;
         frame.getContentPane().removeAll();
         frame.repaint();
