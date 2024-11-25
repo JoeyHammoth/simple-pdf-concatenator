@@ -9,9 +9,9 @@ import java.util.List;
 public class Reverser {
     private String inputPdf;
     private String outputPdf;
-    public Reverser(String inputPdf, String outputPdf) {
+    public Reverser(String inputPdf, String outputPdf, String name) {
         this.inputPdf = inputPdf;
-        this.outputPdf = outputPdf;
+        this.outputPdf = outputPdf + "/" + name;
     }
     public void reverse() {
         try (PDDocument document = PDDocument.load(new File(inputPdf))) {

@@ -38,6 +38,7 @@ public class MainMenu implements Interactable{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ReverseMenu reverseMenu = new ReverseMenu(frame);
+                reverseMenu.createMenu();
             }
         });
 

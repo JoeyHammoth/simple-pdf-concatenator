@@ -30,7 +30,6 @@ public class Chooser {
                 JFileChooser fileChooser = new JFileChooser();
                 if (!isFile) {
                     fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-                    System.out.println("God");
                 }
                 int result = fileChooser.showOpenDialog(frame);
 

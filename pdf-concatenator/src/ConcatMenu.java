@@ -7,7 +7,7 @@ public class ConcatMenu implements Interactable {
     private JFrame frame;
     private Chooser inputChooser1;
     private Chooser inputChooser2;
-    private Chooser foderChooser;
+    private Chooser folderChooser;
     private JButton con = new JButton("Concatenate PDF");
     private JLabel warning = new JLabel("Please choose your pdfs.");
     private JLabel finish = new JLabel("Concatenation completed.");
@@ -20,24 +20,28 @@ public class ConcatMenu implements Interactable {
         frame.repaint();
         inputChooser1 = new Chooser(frame, true);
         inputChooser2 = new Chooser(frame, true);
-        foderChooser = new Chooser(frame, false);
+        folderChooser = new Chooser(frame, false);
     }
     public void createMenu() {
         inputChooser1.createChooser(50, 50, 180, 50, "Choose PDF 1");
         inputChooser2.createChooser(50, 100, 180, 100, "Choose PDF 2");
-        foderChooser.createChooser(50, 150, 180, 150, "Choose Folder");
+        folderChooser.createChooser(50, 150, 180, 150, "Choose Folder");
         con.setBounds(150, 200, 220, 50);
         back.setBounds(150, 300, 220, 50);
+        warning.setBounds(150, 250, 220, 50);
+        finish.setBounds(150, 250, 220, 50);
+        finish.setVisible(false);
+        warning.setVisible(false);
 
         con.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String path1 = inputChooser1.getFilePath();
                 String path2 = inputChooser2.getFilePath();
-                String outputPath = foderChooser.getFilePath();
+                String outputPath = folderChooser.getFilePath();
                 if (path1 == null || path2 == null || outputPath == null) {
-                    warning.setBounds(150, 250, 220, 50);
-                    System.out.println("yes");
+                    finish.setVisible(false);
+                    warning.setVisible(true);
                 } else {
                     Concat concat = new Concat(path1, path2, outputPath, "output.pdf");
                     try {
@@ -45,8 +49,8 @@ public class ConcatMenu implements Interactable {
                     } catch (FileNotFoundException ex) {
                         throw new RuntimeException(ex);
                     }
-                    finish.setBounds(150, 250, 220, 50);
-                    System.out.println("no");
+                    warning.setVisible(false);
+                    finish.setVisible(true);
                 }
             }
         });
