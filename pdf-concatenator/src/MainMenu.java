@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainMenu {
+public class MainMenu implements Interactable{
     private JFrame frame = new JFrame("PDF Concatenator");
     private JButton concatButton = new JButton("Concatenate");
     private JButton revButton = new JButton("Reverse");
@@ -11,6 +11,11 @@ public class MainMenu {
     private JLabel text = new JLabel("Select a PDF action.");
     public MainMenu() {
 
+    }
+    public MainMenu(JFrame frame) {
+        this.frame = frame;
+        frame.getContentPane().removeAll();
+        frame.repaint();
     }
     public JFrame getFrame() {
         return this.frame;
@@ -25,6 +30,7 @@ public class MainMenu {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ConcatMenu concatMenu = new ConcatMenu(frame);
+                concatMenu.createMenu();
             }
         });
 

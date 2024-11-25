@@ -7,15 +7,19 @@ public class Chooser {
     private JButton openButton;
     private JTextField filePathField;
     private String filePath;
-    public Chooser(JFrame frame) {
+    private boolean isFile;
+    public Chooser(JFrame frame, boolean isFile) {
         this.frame = frame;
+        this.isFile = isFile;
     }
-    public void createChooser() {
+    public void createChooser(int x1, int y1, int x2, int y2, String text) {
         // Initialize the open button
-        openButton = new JButton("Open File");
+        openButton = new JButton(text);
+        openButton.setBounds(x1, y1, 120, 30);
 
         // Initialize the text field to display file path
-        filePathField = new JTextField(30);
+        filePathField = new JTextField();
+        filePathField.setBounds(x2, y2, 280, 30);
         filePathField.setEditable(false); // Make it non-editable
 
         // Add an action listener to the open button
@@ -24,6 +28,10 @@ public class Chooser {
             public void actionPerformed(ActionEvent e) {
                 // Open the file chooser
                 JFileChooser fileChooser = new JFileChooser();
+                if (!isFile) {
+                    fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                    System.out.println("God");
+                }
                 int result = fileChooser.showOpenDialog(frame);
 
                 // If the user selects a file

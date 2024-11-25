@@ -7,8 +7,9 @@
     <list default="true" id="a7ebb9ba-20ef-490d-b9d0-05e938852f47" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Chooser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Chooser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Concat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Concat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ConcatMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConcatMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -66,6 +68,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="Chooser" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Chooser" />
@@ -98,7 +105,7 @@
       <workItem from="1732290005435" duration="3795000" />
       <workItem from="1732462394997" duration="1261000" />
       <workItem from="1732463667947" duration="1904000" />
-      <workItem from="1732542484199" duration="2584000" />
+      <workItem from="1732542484199" duration="7269000" />
     </task>
     <servers />
   </component>

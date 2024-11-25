@@ -8,10 +8,10 @@ public class Concat {
     private String inputPdf1;
     private String inputPdf2;
     private String outputPdf;
-    public Concat(String inputPdf1, String inputPdf2, String outputPdf) {
+    public Concat(String inputPdf1, String inputPdf2, String outputPdf, String name) {
         this.inputPdf1 = inputPdf1;
         this.inputPdf2 = inputPdf2;
-        this.outputPdf = outputPdf;
+        this.outputPdf = outputPdf + "/" + name;
     }
     public void concatenate() throws FileNotFoundException {
         PDFMergerUtility pdfMerger = new PDFMergerUtility();
