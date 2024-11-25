@@ -9,9 +9,11 @@ public class MergeMenu implements Interactable {
     private Chooser inputChooser2;
     private Chooser folderChooser;
     private JButton merge = new JButton("Merge PDF");
-    private JLabel warning = new JLabel("Please choose your pdfs.");
+    private JLabel warning = new JLabel("Please choose your pdfs and name.");
     private JLabel finish = new JLabel("Merger completed.");
     private JButton back = new JButton("Go back");
+    private JTextField field = new JTextField();
+    private JLabel title = new JLabel("Merge Even and Odd Pages of PDF Files.");
 
     public MergeMenu(JFrame frame) {
         this.frame = frame;
@@ -22,13 +24,16 @@ public class MergeMenu implements Interactable {
         folderChooser = new Chooser(frame, false);
     }
     public void createMenu() {
+        title.setBounds(150, 0, 300, 50);
         inputChooser1.createChooser(25, 50, 180, 50, "Choose Even PDF");
         inputChooser2.createChooser(25, 100, 180, 100, "Choose Odd PDF");
         folderChooser.createChooser(25, 150, 180, 150, "Choose Folder");
-        merge.setBounds(150, 200, 220, 50);
-        back.setBounds(150, 300, 220, 50);
-        warning.setBounds(150, 250, 220, 50);
-        finish.setBounds(150, 250, 220, 50);
+        field.setBounds(50, 200, 400, 30);
+        field.setToolTipText("Fill in name of the file");
+        merge.setBounds(150, 250, 220, 50);
+        back.setBounds(150, 350, 220, 50);
+        warning.setBounds(150, 300, 300, 50);
+        finish.setBounds(150, 300, 220, 50);
         finish.setVisible(false);
         warning.setVisible(false);
 
@@ -62,6 +67,8 @@ public class MergeMenu implements Interactable {
         frame.add(back);
         frame.add(warning);
         frame.add(finish);
+        frame.add(field);
+        frame.add(title);
         frame.setVisible(true);
     }
 }

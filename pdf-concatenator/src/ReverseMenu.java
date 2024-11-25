@@ -8,9 +8,11 @@ public class ReverseMenu implements Interactable {
     private Chooser inputChooser;
     private Chooser outputChooser;
     private JButton rev = new JButton("Reverse PDF");
-    private JLabel warning = new JLabel("Please choose your pdf.");
+    private JLabel warning = new JLabel("Please choose your pdfs and name.");
     private JLabel finish = new JLabel("Reversal completed.");
     private JButton back = new JButton("Go back");
+    private JTextField field = new JTextField();
+    private JLabel title = new JLabel("Reverse Order of Pages for a PDF.");
 
     public ReverseMenu(JFrame frame) {
         this.frame = frame;
@@ -20,12 +22,15 @@ public class ReverseMenu implements Interactable {
         outputChooser = new Chooser(frame, false);
     }
     public void createMenu() {
+        title.setBounds(150, 0, 300, 50);
         inputChooser.createChooser(25, 50, 180, 50, "Choose PDF");
         outputChooser.createChooser(25, 100, 180, 100, "Choose Folder");
-        rev.setBounds(150, 150, 220, 50);
-        back.setBounds(150, 250, 220, 50);
-        warning.setBounds(150, 200, 220, 50);
-        finish.setBounds(150, 200, 220, 50);
+        field.setBounds(50, 150, 400, 30);
+        field.setToolTipText("Fill in name of the file");
+        rev.setBounds(150, 200, 220, 50);
+        back.setBounds(150, 300, 220, 50);
+        warning.setBounds(150, 250, 300, 50);
+        finish.setBounds(150, 250, 220, 50);
         warning.setVisible(false);
         finish.setVisible(false);
 
@@ -58,6 +63,8 @@ public class ReverseMenu implements Interactable {
         frame.add(back);
         frame.add(warning);
         frame.add(finish);
+        frame.add(field);
+        frame.add(title);
         frame.setVisible(true);
     }
 }

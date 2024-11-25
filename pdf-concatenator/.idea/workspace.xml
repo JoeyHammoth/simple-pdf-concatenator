@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a7ebb9ba-20ef-490d-b9d0-05e938852f47" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConcatMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConcatMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MergeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MergeMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Merger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Merger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ReverseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ReverseMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +104,7 @@
       <workItem from="1732290005435" duration="3795000" />
       <workItem from="1732462394997" duration="1261000" />
       <workItem from="1732463667947" duration="1904000" />
-      <workItem from="1732542484199" duration="8921000" />
+      <workItem from="1732542484199" duration="10212000" />
     </task>
     <servers />
   </component>
