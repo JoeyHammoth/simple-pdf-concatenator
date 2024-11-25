@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../pdfbox-app-2.0.32.jar!/" />
+          <root url="jar://$MODULE_DIR$/../pdfbox-app-2.0.32.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/pdf-concatenator.iml" filepath="$PROJECT_DIR$/pdf-concatenator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/simple-pdf-concatenator.iml" filepath="$PROJECT_DIR$/simple-pdf-concatenator.iml" />
     </modules>
   </component>
 </project>
