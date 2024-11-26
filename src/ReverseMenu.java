@@ -1,10 +1,9 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 
-public class ReverseMenu implements Interactable {
-    private JFrame frame;
+public class ReverseMenu extends AbstractMenu implements Interactable {
+    private static ReverseMenu instance = new ReverseMenu();
     private Chooser inputChooser;
     private Chooser outputChooser;
     private JButton rev = new JButton("Reverse PDF");
@@ -14,14 +13,22 @@ public class ReverseMenu implements Interactable {
     private JTextField field = new JTextField();
     private JLabel title = new JLabel("Reverse Order of Pages for a PDF.");
 
-    public ReverseMenu(JFrame frame) {
-        this.frame = frame;
-        frame.getContentPane().removeAll();
-        frame.repaint();
+    private ReverseMenu() {
         inputChooser = new Chooser(frame, true);
         outputChooser = new Chooser(frame, false);
     }
+    public static ReverseMenu getInstance() {
+        return instance;
+    }
+    public static ReverseMenu getInstance(int count) {
+        if (count >= MAX_ACCESS_COUNT) {
+            instance = new ReverseMenu();
+        }
+        return instance;
+    }
     public void createMenu() {
+        super.clearFrame(frame);
+        super.checkAccessCount(MAX_INSTANCE_COUNT);
         title.setBounds(150, 0, 300, 50);
         inputChooser.createChooser(25, 50, 180, 50, "Choose PDF");
         outputChooser.createChooser(25, 100, 180, 100, "Choose Folder");
@@ -54,7 +61,7 @@ public class ReverseMenu implements Interactable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainMenu mainMenu = new MainMenu(frame);
+                MainMenu mainMenu = MainMenu.getInstance(ReverseMenu.super.getMainCount());
                 mainMenu.createMenu();
             }
         });

@@ -1,10 +1,9 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 
-public class MergeMenu implements Interactable {
-    private JFrame frame;
+public class MergeMenu extends AbstractMenu implements Interactable {
+    private static MergeMenu instance = new MergeMenu();
     private Chooser inputChooser1;
     private Chooser inputChooser2;
     private Chooser folderChooser;
@@ -15,15 +14,23 @@ public class MergeMenu implements Interactable {
     private JTextField field = new JTextField();
     private JLabel title = new JLabel("Merge Even and Odd Pages of PDF Files.");
 
-    public MergeMenu(JFrame frame) {
-        this.frame = frame;
-        frame.getContentPane().removeAll();
-        frame.repaint();
+    private MergeMenu() {
         inputChooser1 = new Chooser(frame, true);
         inputChooser2 = new Chooser(frame, true);
         folderChooser = new Chooser(frame, false);
     }
+    public static MergeMenu getInstance() {
+        return instance;
+    }
+    public static MergeMenu getInstance(int count) {
+        if (count >= MAX_ACCESS_COUNT) {
+            instance = new MergeMenu();
+        }
+        return instance;
+    }
     public void createMenu() {
+        super.clearFrame(frame);
+        super.checkAccessCount(MAX_INSTANCE_COUNT);
         title.setBounds(150, 0, 300, 50);
         inputChooser1.createChooser(25, 50, 180, 50, "Choose Even PDF");
         inputChooser2.createChooser(25, 100, 180, 100, "Choose Odd PDF");
@@ -58,7 +65,7 @@ public class MergeMenu implements Interactable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainMenu mainMenu = new MainMenu(frame);
+                MainMenu mainMenu = MainMenu.getInstance(MergeMenu.super.getMainCount());
                 mainMenu.createMenu();
             }
         });

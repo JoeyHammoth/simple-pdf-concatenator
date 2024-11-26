@@ -3,8 +3,8 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import javax.swing.*;
 
-public class ConcatMenu implements Interactable {
-    private JFrame frame;
+public class ConcatMenu extends AbstractMenu implements Interactable {
+    private static ConcatMenu instance = new ConcatMenu();
     private Chooser inputChooser1;
     private Chooser inputChooser2;
     private Chooser folderChooser;
@@ -15,16 +15,23 @@ public class ConcatMenu implements Interactable {
     private JTextField field = new JTextField();
     private JLabel title = new JLabel("A Simple PDF Concatenator.");
 
-
-    public ConcatMenu(JFrame frame) {
-        this.frame = frame;
-        frame.getContentPane().removeAll();
-        frame.repaint();
+    private ConcatMenu() {
         inputChooser1 = new Chooser(frame, true);
         inputChooser2 = new Chooser(frame, true);
         folderChooser = new Chooser(frame, false);
     }
+    public static ConcatMenu getInstance() {
+        return instance;
+    }
+    public static ConcatMenu getInstance(int count) {
+        if (count >= MAX_ACCESS_COUNT) {
+            instance = new ConcatMenu();
+        }
+        return instance;
+    }
     public void createMenu() {
+        super.clearFrame(frame);
+        super.checkAccessCount(MAX_INSTANCE_COUNT);
         title.setBounds(150, 0, 220, 50);
         inputChooser1.createChooser(25, 50, 180, 50, "Choose PDF 1");
         inputChooser2.createChooser(25, 100, 180, 100, "Choose PDF 2");
@@ -64,7 +71,7 @@ public class ConcatMenu implements Interactable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainMenu mainMenu = new MainMenu(frame);
+                MainMenu mainMenu = MainMenu.getInstance(ConcatMenu.super.getMainCount());
                 mainMenu.createMenu();
             }
         });
