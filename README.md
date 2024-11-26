@@ -37,5 +37,8 @@ Since creating a new instance resets everything, we can create a new instance fo
 ### Idea #4: Forgo the Optimization Idea Completely ###
 Since it works well without any optimizations, why change it? Also, the JVM garbage collector will probably handle this, making it a non-issue.
 
+### Update (3:42 AM 27/11/24) ###
+I tried a number of options. First, I tried having all instances of all menus referenced in the interactable interface. I thought that an interface housing an attribute of a reference instance of a class that implements that same interface is not possible, but it turns out it is. Alas, this turned to naught since the same performance issues still remained. Thus, I tried to do idea #3 where I created an abstract class that contained a bunch of counters. Long story short, this didn't work as well. In the end, I'm just gonna stick with #4 and forget that I even tried to do this stuff. If anyone can help me understand this mess that would be greatly appreciated!!! Anyways, I'm gonna go to sleep since my head is about to explode 🤯
+
 # Final Notes :black_nib:
 This is mainly a side project used as personal refresher to basic Java programming as well as a dive into Java Swing. Hope to get more in-depth experience into Java GUI toolkits and libraries like Swing, AWT and FX. Probably a good idea to look at how this stuff can be utilized as a launching point to more involved technologies such as Spring and backend frameworks that houses MVC web app frameworks and such. 
