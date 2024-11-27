@@ -4,7 +4,6 @@ import java.io.*;
 import javax.swing.*;
 
 public class ConcatMenu implements Interactable {
-    private JFrame frame;
     private Chooser inputChooser1;
     private Chooser inputChooser2;
     private Chooser folderChooser;
@@ -16,8 +15,7 @@ public class ConcatMenu implements Interactable {
     private JLabel title = new JLabel("A Simple PDF Concatenator.");
 
 
-    public ConcatMenu(JFrame frame) {
-        this.frame = frame;
+    public ConcatMenu() {
         frame.getContentPane().removeAll();
         frame.repaint();
         inputChooser1 = new Chooser(frame, true);
@@ -64,7 +62,7 @@ public class ConcatMenu implements Interactable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainMenu mainMenu = new MainMenu(frame);
+                MainMenu mainMenu = new MainMenu();
                 mainMenu.createMenu();
             }
         });
