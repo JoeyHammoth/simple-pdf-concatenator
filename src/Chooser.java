@@ -11,6 +11,10 @@ public class Chooser {
         this.frame = frame;
         this.isFile = isFile;
     }
+    public void modifyChooser(int x1, int y1, int x2, int y2) {
+        openButton.setBounds(x1, y1, 150, 30);
+        filePathField.setBounds(x2, y2, 280, 30);
+    }
     public void createChooser(int x1, int y1, int x2, int y2, String text) {
         // Initialize the open button
         openButton = new JButton(text);
