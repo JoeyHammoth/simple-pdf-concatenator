@@ -13,6 +13,10 @@ public class MultiReverser {
         this.pdfList = list;
         this.outputPdf = outputPdf + "/" + name;
     }
+
+    // TODO: Change output pdf name such that it doesn't just override the previous pdfs. Use a normal for loop
+    // instead of a foreach loop. 
+
     public void reverse() {
         for (String inputPdf : pdfList) {
             try (PDDocument document = PDDocument.load(new File(inputPdf))) {

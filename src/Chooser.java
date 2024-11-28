@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Chooser {
@@ -14,6 +15,12 @@ public class Chooser {
     public void modifyChooser(int x1, int y1, int x2, int y2) {
         openButton.setBounds(x1, y1, 150, 30);
         filePathField.setBounds(x2, y2, 280, 30);
+    }
+    public Rectangle getChooserButton() {
+        return openButton.getBounds();
+    }
+    public Rectangle getChooserField() {
+        return filePathField.getBounds();
     }
     public void createChooser(int x1, int y1, int x2, int y2, String text) {
         // Initialize the open button

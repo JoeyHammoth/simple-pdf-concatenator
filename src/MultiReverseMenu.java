@@ -1,11 +1,12 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MultiReverseMenu implements Interactable {
     private Chooser inputChooser;
-    private List<Chooser> inputList;
+    private List<Chooser> inputList = new ArrayList<>();
     private Chooser outputChooser;
     private JButton add = new JButton("+");
     private JButton rev = new JButton("Reverse PDF");
@@ -22,26 +23,45 @@ public class MultiReverseMenu implements Interactable {
         outputChooser = new Chooser(frame, false);
     }
     public void moveButtons() {
-        outputChooser.modifyChooser(25, 100, 180, 100);
-        field.setBounds(50, 150, 400, 30);
-        rev.setBounds(150, 200, 220, 50);
-        back.setBounds(150, 300, 220, 50);
-        warning.setBounds(150, 250, 300, 50);
-        finish.setBounds(150, 250, 220, 50);
-
+        add.setBounds(150, add.getBounds().y + 50, 220, 50);
+        outputChooser.modifyChooser(25, outputChooser.getChooserButton().y + 50, 180,
+                outputChooser.getChooserField().y + 50);
+        field.setBounds(50, field.getBounds().y + 50, 400, 30);
+        rev.setBounds(150, rev.getBounds().y + 50, 220, 50);
+        back.setBounds(150, back.getBounds().y + 50, 220, 50);
+        warning.setBounds(150, warning.getBounds().y + 50, 300, 50);
+        finish.setBounds(150, finish.getBounds().y + 50, 220, 50);
+    }
+    public void createInput() {
+        Chooser input = new Chooser(frame, true);
+        if (inputList.isEmpty()) {
+            input.createChooser(25, inputChooser.getChooserButton().y + 50, 180, inputChooser.getChooserField().y + 50, "Choose PDF");
+        } else {
+            input.createChooser(25, inputList.getLast().getChooserButton().y + 50, 180, inputList.getLast().getChooserField().y + 50, "Choose PDF");
+        }
+        inputList.add(input);
     }
     public void createMenu() {
         title.setBounds(150, 0, 300, 50);
         inputChooser.createChooser(25, 50, 180, 50, "Choose PDF");
-        outputChooser.createChooser(25, 100, 180, 100, "Choose Folder");
-        field.setBounds(50, 150, 400, 30);
+        add.setBounds(150, 100, 220, 50);
+        outputChooser.createChooser(25, 150, 180, 150, "Choose Folder");
+        field.setBounds(50, 200, 400, 30);
         field.setToolTipText("Fill in name of the file");
-        rev.setBounds(150, 200, 220, 50);
-        back.setBounds(150, 300, 220, 50);
-        warning.setBounds(150, 250, 300, 50);
-        finish.setBounds(150, 250, 220, 50);
+        rev.setBounds(150, 250, 220, 50);
+        back.setBounds(150, 350, 220, 50);
+        warning.setBounds(150, 300, 300, 50);
+        finish.setBounds(150, 300, 220, 50);
         warning.setVisible(false);
         finish.setVisible(false);
+
+        add.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                moveButtons();
+                createInput();
+            }
+        });
 
         rev.addActionListener(new ActionListener() {
             @Override
@@ -74,6 +94,7 @@ public class MultiReverseMenu implements Interactable {
         frame.add(finish);
         frame.add(field);
         frame.add(title);
+        frame.add(add);
         frame.setVisible(true);
     }
 }
