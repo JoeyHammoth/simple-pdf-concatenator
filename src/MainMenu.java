@@ -28,7 +28,7 @@ public class MainMenu implements Interactable{
         revButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ReverseMenu reverseMenu = new ReverseMenu();
+                MultiReverseMenu reverseMenu = new MultiReverseMenu();
                 reverseMenu.createMenu();
             }
         });
@@ -45,7 +45,7 @@ public class MainMenu implements Interactable{
         frame.add(revButton);
         frame.add(mergeButton);
         frame.add(text);
-        frame.setSize(500, 600);
+        frame.setSize(500, 800);
         frame.setLayout(null);
         frame.setVisible(true);
     }

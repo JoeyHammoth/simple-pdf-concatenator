@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class MultiReverseMenu implements Interactable {
     private Chooser inputChooser;
@@ -14,7 +15,7 @@ public class MultiReverseMenu implements Interactable {
     private JLabel finish = new JLabel("Reversal completed.");
     private JButton back = new JButton("Go back");
     private JTextField field = new JTextField();
-    private JLabel title = new JLabel("Reverse Order of Pages for a PDF.");
+    private JLabel title = new JLabel("Reverse Order of Pages for Multiple PDF Files.");
 
     public MultiReverseMenu() {
         frame.getContentPane().removeAll();
@@ -23,14 +24,18 @@ public class MultiReverseMenu implements Interactable {
         outputChooser = new Chooser(frame, false);
     }
     public void moveButtons() {
-        add.setBounds(150, add.getBounds().y + 50, 220, 50);
-        outputChooser.modifyChooser(25, outputChooser.getChooserButton().y + 50, 180,
-                outputChooser.getChooserField().y + 50);
-        field.setBounds(50, field.getBounds().y + 50, 400, 30);
-        rev.setBounds(150, rev.getBounds().y + 50, 220, 50);
-        back.setBounds(150, back.getBounds().y + 50, 220, 50);
-        warning.setBounds(150, warning.getBounds().y + 50, 300, 50);
-        finish.setBounds(150, finish.getBounds().y + 50, 220, 50);
+        if (inputList.size() > 6) {
+            add.setVisible(false);
+        } else {
+            add.setBounds(150, add.getBounds().y + 50, 220, 50);
+            outputChooser.modifyChooser(25, outputChooser.getChooserButton().y + 50, 180,
+                    outputChooser.getChooserField().y + 50);
+            field.setBounds(50, field.getBounds().y + 50, 400, 30);
+            rev.setBounds(150, rev.getBounds().y + 50, 220, 50);
+            back.setBounds(150, back.getBounds().y + 50, 220, 50);
+            warning.setBounds(150, warning.getBounds().y + 50, 300, 50);
+            finish.setBounds(150, finish.getBounds().y + 50, 220, 50);
+        }
     }
     public void createInput() {
         Chooser input = new Chooser(frame, true);
@@ -58,21 +63,32 @@ public class MultiReverseMenu implements Interactable {
         add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                moveButtons();
                 createInput();
+                moveButtons();
             }
         });
 
         rev.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String inputPath = inputChooser.getFilePath();
+                String inputPathOne = inputChooser.getFilePath();
+                boolean blank = false;
+                List<String> list = new ArrayList<>();
+                list.add(inputPathOne);
+                for (Chooser chooser : inputList) {
+                    if (chooser.getFilePath() == null) {
+                        blank = true;
+                        break;
+                    } else {
+                        list.add(chooser.getFilePath());
+                    }
+                }
                 String outputPath = outputChooser.getFilePath();
-                if (inputPath == null || outputPath == null) {
+                if (inputPathOne == null || outputPath == null || blank || Objects.equals(field.getText(), "")) {
                     warning.setVisible(true);
                     finish.setVisible(false);
                 } else {
-                    Reverser reverser = new Reverser(inputPath, outputPath, "output.pdf");
+                    MultiReverser reverser = new MultiReverser(list, outputPath, field.getText());
                     reverser.reverse();
                     finish.setVisible(true);
                     warning.setVisible(false);
