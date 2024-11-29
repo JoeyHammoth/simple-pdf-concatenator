@@ -66,4 +66,13 @@ public class Chooser {
     public String getFilePath() {
         return filePath;
     }
+    public void setVisibility(boolean input) {
+        if (input) {
+            openButton.setVisible(true);
+            filePathField.setVisible(true);
+        } else {
+            openButton.setVisible(false);
+            filePathField.setVisible(false);
+        }
+    }
 }
