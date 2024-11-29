@@ -20,7 +20,7 @@ public class MainMenu implements Interactable{
         concatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ConcatMenu concatMenu = new ConcatMenu();
+                MultiConcatMenu concatMenu = new MultiConcatMenu();
                 concatMenu.createMenu();
             }
         });
