@@ -12,10 +12,13 @@ public class MergeMenu implements Interactable {
     private JButton back = new JButton("Go back");
     private JTextField field = new JTextField();
     private JLabel title = new JLabel("Merge Even and Odd Pages of PDF Files.");
+    private MainMenu mainMenu;
+
+    public void setMainMenu(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+    }
 
     public MergeMenu() {
-        frame.getContentPane().removeAll();
-        frame.repaint();
         inputChooser1 = new Chooser(frame, true);
         inputChooser2 = new Chooser(frame, true);
         folderChooser = new Chooser(frame, false);
@@ -55,8 +58,8 @@ public class MergeMenu implements Interactable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainMenu mainMenu = new MainMenu();
-                mainMenu.createMenu();
+                setVisibility(false);
+                mainMenu.setVisibility(true);
             }
         });
 
@@ -67,5 +70,27 @@ public class MergeMenu implements Interactable {
         frame.add(field);
         frame.add(title);
         frame.setVisible(true);
+    }
+
+    public void setVisibility(boolean input) {
+        if (input) {
+            inputChooser1.setVisibility(true);
+            inputChooser2.setVisibility(true);
+            folderChooser.setVisibility(true);
+            merge.setVisible(true);
+            back.setVisible(true);
+            field.setVisible(true);
+            title.setVisible(true);
+        } else {
+            inputChooser1.setVisibility(false);
+            inputChooser2.setVisibility(false);
+            folderChooser.setVisibility(false);
+            merge.setVisible(false);
+            warning.setVisible(false);
+            finish.setVisible(false);
+            back.setVisible(false);
+            field.setVisible(false);
+            title.setVisible(false);
+        }
     }
 }

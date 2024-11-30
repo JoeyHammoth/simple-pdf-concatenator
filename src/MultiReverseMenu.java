@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MultiReverseMenu implements Interactable {
+public class MultiReverseMenu implements Interactable, MultiInteractable {
     private Chooser inputChooser;
     private List<Chooser> inputList = new ArrayList<>();
     private Chooser outputChooser;
@@ -16,10 +16,13 @@ public class MultiReverseMenu implements Interactable {
     private JButton back = new JButton("Go back");
     private JTextField field = new JTextField();
     private JLabel title = new JLabel("Reverse Order of Pages for Multiple PDF Files.");
+    private MainMenu mainMenu;
+
+    public void setMainMenu(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+    }
 
     public MultiReverseMenu() {
-        frame.getContentPane().removeAll();
-        frame.repaint();
         inputChooser = new Chooser(frame, true);
         outputChooser = new Chooser(frame, false);
     }
@@ -93,8 +96,8 @@ public class MultiReverseMenu implements Interactable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainMenu mainMenu = new MainMenu();
-                mainMenu.createMenu();
+                setVisibility(false);
+                mainMenu.setVisibility(true);
             }
         });
 
@@ -106,5 +109,33 @@ public class MultiReverseMenu implements Interactable {
         frame.add(title);
         frame.add(add);
         frame.setVisible(true);
+    }
+
+    public void setVisibility(boolean input) {
+        if (input) {
+            inputChooser.setVisibility(true);
+            for (Chooser chooser : inputList) {
+                chooser.setVisibility(true);
+            }
+            outputChooser.setVisibility(true);
+            add.setVisible(true);
+            rev.setVisible(true);
+            back.setVisible(true);
+            field.setVisible(true);
+            title.setVisible(true);
+        } else {
+            inputChooser.setVisibility(false);
+            for (Chooser chooser : inputList) {
+                chooser.setVisibility(false);
+            }
+            outputChooser.setVisibility(false);
+            add.setVisible(false);
+            rev.setVisible(false);
+            warning.setVisible(false);
+            finish.setVisible(false);
+            back.setVisible(false);
+            field.setVisible(false);
+            title.setVisible(false);
+        }
     }
 }
