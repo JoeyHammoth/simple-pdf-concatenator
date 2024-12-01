@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MultiConcatMenu implements Interactable, MultiInteractable {
-    private Chooser inputChooser1 = new Chooser(frame, true);
-    private Chooser inputChooser2 = new Chooser(frame, true);
+    private Chooser inputChooser1;
+    private Chooser inputChooser2;
     private List<Chooser> inputList = new ArrayList<>();
     private Chooser folderChooser = new Chooser(frame, false);
     private JButton add = new JButton("+");
@@ -25,9 +25,14 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
     }
 
     public MultiConcatMenu() {
+        inputChooser1 = new Chooser(frame, true, warning, finish);
+        inputChooser2 = new Chooser(frame, true, warning, finish);
+
         title.setBounds(150, 0, 220, 50);
         inputChooser1.createChooser(25, 50, 180, 50, "Choose PDF 1");
         inputChooser2.createChooser(25, 100, 180, 100, "Choose PDF 2");
+        inputChooser1.setWrong(150, 350, 220, 50);
+        inputChooser2.setWrong(150, 350, 220, 50);
         add.setBounds(150, 150, 220, 50);
         folderChooser.createChooser(25, 200, 180, 200, "Choose Folder");
         field.setBounds(50, 250, 400, 30);
@@ -106,16 +111,23 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
             back.setBounds(150, back.getBounds().y + 50, 220, 50);
             warning.setBounds(100, warning.getBounds().y + 50, 600, 50);
             finish.setBounds(150, finish.getBounds().y + 50, 220, 50);
+            inputChooser1.setWrong(150, inputChooser1.getWrong().y + 50, 220, 50);
+            inputChooser2.setWrong(150, inputChooser2.getWrong().y + 50, 220, 50);
+            for (Chooser chooser : inputList) {
+                chooser.setWrong(150, chooser.getWrong().y + 50, 220, 50);
+            }
         }
     }
     public void createInput() {
-        Chooser input = new Chooser(frame, true);
+        Chooser input = new Chooser(frame, true, warning, finish);
         if (inputList.isEmpty()) {
             input.createChooser(25, inputChooser2.getChooserButton().y + 50, 180,
                     inputChooser2.getChooserField().y + 50, "Choose PDF 3");
+            input.setWrong(150, inputChooser2.getWrong().y, 220, 50);
         } else {
             input.createChooser(25, inputList.getLast().getChooserButton().y + 50, 180,
                     inputList.getLast().getChooserField().y + 50, "Choose PDF " + (inputList.size() + 3));
+            input.setWrong(150, inputList.getLast().getWrong().y, 220, 50);
         }
         inputList.add(input);
     }

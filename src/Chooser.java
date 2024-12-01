@@ -8,9 +8,26 @@ public class Chooser {
     private JTextField filePathField;
     private String filePath;
     private boolean isFile;
+    private JLabel wrong = new JLabel("Selected file is not a pdf.");
+    private JLabel warning;
+    private JLabel finish;
+    private boolean usePdfChecker = false;
+    public Chooser(JFrame frame, boolean isFile, JLabel warning, JLabel finish) {
+        this.frame = frame;
+        this.isFile = isFile;
+        this.warning = warning;
+        this.finish = finish;
+        this.usePdfChecker = true;
+    }
     public Chooser(JFrame frame, boolean isFile) {
         this.frame = frame;
         this.isFile = isFile;
+    }
+    public void setWrong(int x, int y, int width, int height) {
+        wrong.setBounds(x, y, width, height);
+        wrong.setForeground(Color.RED);
+        frame.add(wrong);
+        wrong.setVisible(false);
     }
     public void modifyChooser(int x1, int y1, int x2, int y2) {
         openButton.setBounds(x1, y1, 150, 30);
@@ -21,6 +38,9 @@ public class Chooser {
     }
     public Rectangle getChooserField() {
         return filePathField.getBounds();
+    }
+    public Rectangle getWrong() {
+        return wrong.getBounds();
     }
     public void createChooser(int x1, int y1, int x2, int y2, String text) {
         // Initialize the open button
@@ -47,9 +67,11 @@ public class Chooser {
                 if (result == JFileChooser.APPROVE_OPTION) {
                     // Get the file's path
                     filePath = fileChooser.getSelectedFile().getAbsolutePath();
-
                     // Set the file path to the text field
                     filePathField.setText(filePath);
+                    if (usePdfChecker) {
+                        pdfChecker();
+                    }
                 }
             }
         });
@@ -70,6 +92,7 @@ public class Chooser {
         } else {
             openButton.setVisible(false);
             filePathField.setVisible(false);
+            wrong.setVisible(false);
         }
     }
     public void changeColors(boolean input) {
@@ -79,6 +102,17 @@ public class Chooser {
         } else {
             openButton.setForeground(Color.BLACK);
             filePathField.setBackground(Color.WHITE);
+        }
+    }
+    public void pdfChecker() {
+        if (!filePath.substring(filePath.length() - 3).equals("pdf")) {
+            changeColors(true);
+            wrong.setVisible(true);
+            warning.setVisible(false);
+            finish.setVisible(false);
+        } else {
+            changeColors(false);
+            wrong.setVisible(false);
         }
     }
 }
