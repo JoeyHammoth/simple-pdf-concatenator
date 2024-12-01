@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class Chooser {
+    private static String lastDirectory = System.getProperty("user.home");
     private JFrame frame;
     private JButton openButton;
     private JTextField filePathField;
@@ -55,7 +56,7 @@ public class Chooser {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Open the file chooser
-                JFileChooser fileChooser = new JFileChooser();
+                JFileChooser fileChooser = new JFileChooser(lastDirectory);
                 if (!isFile) {
                     fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
                 }
@@ -70,6 +71,7 @@ public class Chooser {
                     if (usePdfChecker) {
                         pdfChecker();
                     }
+                    lastDirectory = fileChooser.getSelectedFile().getParent();
                 }
             }
         });
