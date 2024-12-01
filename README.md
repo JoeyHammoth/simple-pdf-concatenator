@@ -18,7 +18,8 @@ Again, pretty straightforward. This just basically concatenates two different PD
 - Utilize some design patterns that could potentially increase the efficiency of the program. Some ideas include using a singleton for each menu class to make sure there is only one instance of each menu instead of several menus overlapping each other.
 - Do unit testing on the Java Swing application in order to verify that everything works. Maybe test for key performance metrics including but not limited to latency and others.
 - When required fields are blank, mark or highlight them when the user clicks the "go" button.
-- Save file directory information so that when the user go from the main menu to the a feature, the fields are the same as when the user last left them. 
+- Save file directory information so that when the user go from the main menu to the a feature, the fields are the same as when the user last left them.
+- Alerting the user if a non-pdf file is selected.
 
 # Final Notes :black_nib:
 This is mainly a side project used as personal refresher to basic Java programming as well as a dive into Java Swing. Hope to get more in-depth experience into Java GUI toolkits and libraries like Swing, AWT and FX. Probably a good idea to look at how this stuff can be utilized as a launching point to more involved technologies such as Spring and backend frameworks that houses MVC web app frameworks and such. 
