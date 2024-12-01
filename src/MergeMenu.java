@@ -3,9 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MergeMenu implements Interactable {
-    private Chooser inputChooser1;
-    private Chooser inputChooser2;
-    private Chooser folderChooser;
+    private Chooser inputChooser1 = new Chooser(frame, true);
+    private Chooser inputChooser2 = new Chooser(frame, true);
+    private Chooser folderChooser = new Chooser(frame, false);
     private JButton merge = new JButton("Merge PDF");
     private JLabel warning = new JLabel("Please choose your pdfs and name.");
     private JLabel finish = new JLabel("Merger completed.");
@@ -19,11 +19,6 @@ public class MergeMenu implements Interactable {
     }
 
     public MergeMenu() {
-        inputChooser1 = new Chooser(frame, true);
-        inputChooser2 = new Chooser(frame, true);
-        folderChooser = new Chooser(frame, false);
-    }
-    public void createMenu() {
         title.setBounds(150, 0, 300, 50);
         inputChooser1.createChooser(25, 50, 180, 50, "Choose Even PDF");
         inputChooser2.createChooser(25, 100, 180, 100, "Choose Odd PDF");
@@ -69,9 +64,8 @@ public class MergeMenu implements Interactable {
         frame.add(finish);
         frame.add(field);
         frame.add(title);
-        frame.setVisible(true);
+        setVisibility(false);
     }
-
     public void setVisibility(boolean input) {
         if (input) {
             inputChooser1.setVisibility(true);

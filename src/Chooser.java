@@ -57,9 +57,6 @@ public class Chooser {
         // Add components to the frame
         frame.add(openButton);
         frame.add(filePathField);
-
-        // Make the frame visible
-        frame.setVisible(true);
     }
 
     // Method to get the file path attribute

@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MultiConcatMenu implements Interactable, MultiInteractable {
-    private Chooser inputChooser1;
-    private Chooser inputChooser2;
+    private Chooser inputChooser1 = new Chooser(frame, true);
+    private Chooser inputChooser2 = new Chooser(frame, true);
     private List<Chooser> inputList = new ArrayList<>();
-    private Chooser folderChooser;
+    private Chooser folderChooser = new Chooser(frame, false);
     private JButton add = new JButton("+");
     private JButton con = new JButton("Concatenate PDF");
     private JLabel warning = new JLabel("Please choose at least two pdfs, a location and a name.");
@@ -24,10 +24,6 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
     }
 
     public MultiConcatMenu() {
-        inputChooser1 = new Chooser(frame, true);
-        inputChooser2 = new Chooser(frame, true);
-        folderChooser = new Chooser(frame, false);
-
         title.setBounds(150, 0, 220, 50);
         inputChooser1.createChooser(25, 50, 180, 50, "Choose PDF 1");
         inputChooser2.createChooser(25, 100, 180, 100, "Choose PDF 2");
@@ -118,72 +114,6 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
         }
         inputList.add(input);
     }
-    public void createMenu() {
-//        title.setBounds(150, 0, 220, 50);
-//        inputChooser1.createChooser(25, 50, 180, 50, "Choose PDF 1");
-//        inputChooser2.createChooser(25, 100, 180, 100, "Choose PDF 2");
-//        add.setBounds(150, 150, 220, 50);
-//        folderChooser.createChooser(25, 200, 180, 200, "Choose Folder");
-//        field.setBounds(50, 250, 400, 30);
-//        field.setToolTipText("Fill in the name of the file");
-//        con.setBounds(150, 300, 220, 50);
-//        back.setBounds(150, 400, 220, 50);
-//        warning.setBounds(100, 350, 600, 50);
-//        finish.setBounds(150, 350, 220, 50);
-//        finish.setVisible(false);
-//        warning.setVisible(false);
-//
-//        add.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                createInput();
-//                moveButtons();
-//            }
-//        });
-//
-//        con.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                String path1 = inputChooser1.getFilePath();
-//                String path2 = inputChooser2.getFilePath();
-//                List<String> list = new ArrayList<>();
-//                list.add(path1);
-//                list.add(path2);
-//                String outputPath = folderChooser.getFilePath();
-//                String name = field.getText();
-//                if (path1 == null || path2 == null || outputPath == null || name.isEmpty()) {
-//                    finish.setVisible(false);
-//                    warning.setVisible(true);
-//                } else {
-//                    MultiConcat concat = new MultiConcat(list, outputPath, name);
-//                    try {
-//                        concat.concatenate();
-//                    } catch (FileNotFoundException ex) {
-//                        throw new RuntimeException(ex);
-//                    }
-//                    warning.setVisible(false);
-//                    finish.setVisible(true);
-//                }
-//            }
-//        });
-//
-//        back.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                setVisibility(false);
-//                mainMenu.setVisibility(true);
-//            }
-//        });
-//
-//        frame.add(con);
-//        frame.add(back);
-//        frame.add(warning);
-//        frame.add(finish);
-//        frame.add(field);
-//        frame.add(title);
-//        frame.add(add);
-//        frame.setVisible(true);
-    }
 
     public void setVisibility(boolean input) {
         if (input) {
@@ -193,11 +123,11 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
                 chooser.setVisibility(true);
             }
             folderChooser.setVisibility(true);
-            add.setVisible(true);
             con.setVisible(true);
             back.setVisible(true);
             field.setVisible(true);
             title.setVisible(true);
+            add.setVisible(inputList.size() <= 5);
         } else {
             inputChooser1.setVisibility(false);
             inputChooser2.setVisibility(false);

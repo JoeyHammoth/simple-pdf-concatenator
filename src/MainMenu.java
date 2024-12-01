@@ -45,10 +45,8 @@ public class MainMenu implements Interactable{
                 if (!containsRevMen) {
                     containsRevMen = true;
                     reverseMenu.setMainMenu(self);
-                    reverseMenu.createMenu();
-                } else {
-                    reverseMenu.setVisibility(true);
                 }
+                reverseMenu.setVisibility(true);
             }
         });
 
@@ -59,10 +57,8 @@ public class MainMenu implements Interactable{
                 if (!containsMergeMen) {
                     containsMergeMen = true;
                     mergeMenu.setMainMenu(self);
-                    mergeMenu.createMenu();
-                } else {
-                    mergeMenu.setVisibility(true);
                 }
+                mergeMenu.setVisibility(true);
             }
         });
 
