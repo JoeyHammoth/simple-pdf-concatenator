@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -29,6 +30,7 @@ public class MergeMenu implements Interactable {
         back.setBounds(150, 350, 220, 50);
         warning.setBounds(150, 300, 300, 50);
         finish.setBounds(150, 300, 220, 50);
+        warning.setForeground(Color.RED);
         finish.setVisible(false);
         warning.setVisible(false);
 
@@ -39,11 +41,13 @@ public class MergeMenu implements Interactable {
                 String path2 = inputChooser2.getFilePath();
                 String outputPath = folderChooser.getFilePath();
                 if (path1 == null || path2 == null || outputPath == null) {
+                    changeFieldColors(true);
                     finish.setVisible(false);
                     warning.setVisible(true);
                 } else {
                     Merger merger = new Merger(path1, path2, outputPath, "output.pdf");
                     merger.merge();
+                    changeFieldColors(false);
                     warning.setVisible(false);
                     finish.setVisible(true);
                 }
@@ -53,6 +57,7 @@ public class MergeMenu implements Interactable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                changeFieldColors(false);
                 setVisibility(false);
                 mainMenu.setVisibility(true);
             }
@@ -85,6 +90,19 @@ public class MergeMenu implements Interactable {
             back.setVisible(false);
             field.setVisible(false);
             title.setVisible(false);
+        }
+    }
+    public void changeFieldColors(boolean input) {
+        if (input) {
+            inputChooser1.changeColors(true);
+            inputChooser2.changeColors(true);
+            folderChooser.changeColors(true);
+            field.setBackground(Color.RED);
+        } else {
+            inputChooser1.changeColors(false);
+            inputChooser2.changeColors(false);
+            folderChooser.changeColors(false);
+            field.setBackground(Color.WHITE);
         }
     }
 }

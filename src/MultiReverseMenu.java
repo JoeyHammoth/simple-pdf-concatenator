@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
         back.setBounds(150, 350, 220, 50);
         warning.setBounds(100, 300, 600, 50);
         finish.setBounds(150, 300, 220, 50);
+        warning.setForeground(Color.RED);
         warning.setVisible(false);
         finish.setVisible(false);
 
@@ -53,11 +55,13 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
                 String outputPath = outputChooser.getFilePath();
                 String name = field.getText();
                 if (inputPathOne == null || outputPath == null || name.isEmpty()) {
+                    changeFieldColors(true);
                     warning.setVisible(true);
                     finish.setVisible(false);
                 } else {
                     MultiReverser reverser = new MultiReverser(list, outputPath, name);
                     reverser.reverse();
+                    changeFieldColors(false);
                     finish.setVisible(true);
                     warning.setVisible(false);
                 }
@@ -67,6 +71,7 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                changeFieldColors(false);
                 setVisibility(false);
                 mainMenu.setVisibility(true);
             }
@@ -131,6 +136,17 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
             back.setVisible(false);
             field.setVisible(false);
             title.setVisible(false);
+        }
+    }
+    public void changeFieldColors(boolean input) {
+        if (input) {
+            inputChooser.changeColors(true);
+            outputChooser.changeColors(true);
+            field.setBackground(Color.RED);
+        } else {
+            inputChooser.changeColors(false);
+            outputChooser.changeColors(false);
+            field.setBackground(Color.WHITE);
         }
     }
 }

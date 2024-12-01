@@ -72,4 +72,13 @@ public class Chooser {
             filePathField.setVisible(false);
         }
     }
+    public void changeColors(boolean input) {
+        if (input) {
+            openButton.setForeground(Color.RED);
+            filePathField.setBackground(Color.RED);
+        } else {
+            openButton.setForeground(Color.BLACK);
+            filePathField.setBackground(Color.WHITE);
+        }
+    }
 }

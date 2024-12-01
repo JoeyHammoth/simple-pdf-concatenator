@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -35,6 +36,7 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
         back.setBounds(150, 400, 220, 50);
         warning.setBounds(100, 350, 600, 50);
         finish.setBounds(150, 350, 220, 50);
+        warning.setForeground(Color.RED);
         finish.setVisible(false);
         warning.setVisible(false);
 
@@ -57,6 +59,7 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
                 String outputPath = folderChooser.getFilePath();
                 String name = field.getText();
                 if (path1 == null || path2 == null || outputPath == null || name.isEmpty()) {
+                    changeFieldColors(true);
                     finish.setVisible(false);
                     warning.setVisible(true);
                 } else {
@@ -66,6 +69,7 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
                     } catch (FileNotFoundException ex) {
                         throw new RuntimeException(ex);
                     }
+                    changeFieldColors(false);
                     warning.setVisible(false);
                     finish.setVisible(true);
                 }
@@ -75,6 +79,7 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                changeFieldColors(false);
                 setVisibility(false);
                 mainMenu.setVisibility(true);
             }
@@ -142,6 +147,20 @@ public class MultiConcatMenu implements Interactable, MultiInteractable {
             back.setVisible(false);
             field.setVisible(false);
             title.setVisible(false);
+        }
+    }
+
+    public void changeFieldColors(boolean input) {
+        if (input) {
+            inputChooser1.changeColors(true);
+            inputChooser2.changeColors(true);
+            folderChooser.changeColors(true);
+            field.setBackground(Color.RED);
+        } else {
+            inputChooser1.changeColors(false);
+            inputChooser2.changeColors(false);
+            folderChooser.changeColors(false);
+            field.setBackground(Color.WHITE);
         }
     }
 }
