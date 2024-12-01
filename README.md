@@ -14,7 +14,7 @@ Again, pretty straightforward. This just basically concatenates two different PD
 - Make this application accessible in the web so that you can access it simply by clicking on some button or link. 
 - Potentially make an executable out of this for more convenient access without running through the terminal. 
 - Use ArrayLists to be able to upload and merge/concatenate more PDFs at once. Haven't figured out the appropriate Swing UI to enable this, however ☑️
-- Make a more convenient file directory system where the last directory is saved and doesn't just reset to some random directory.
+- Make a more convenient file directory system where the last directory is saved and doesn't just reset to some random directory ☑️
 - Utilize some design patterns that could potentially increase the efficiency of the program. Some ideas include using a singleton for each menu class to make sure there is only one instance of each menu instead of several menus overlapping each other ☑️
 - Do unit testing on the Java Swing application in order to verify that everything works. Maybe test for key performance metrics including but not limited to latency and others.
 - When required fields are blank, mark or highlight them when the user clicks the "go" button ☑️
