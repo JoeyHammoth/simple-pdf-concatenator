@@ -8,6 +8,24 @@ public class Chooser {
     private JTextField filePathField;
     private String filePath;
     private boolean isFile;
+    private JLabel wrong;
+    private JLabel warning;
+    private JLabel finish;
+    private JLabel wrongWarning;
+    private boolean usePdfChecker = false;
+    private boolean filled = true;
+    public boolean getFilled() {
+        return filled;
+    }
+    public Chooser(JFrame frame, boolean isFile, JLabel warning, JLabel finish, JLabel wrong, JLabel wrongWarning) {
+        this.frame = frame;
+        this.isFile = isFile;
+        this.warning = warning;
+        this.finish = finish;
+        this.wrong = wrong;
+        this.wrongWarning = wrongWarning;
+        this.usePdfChecker = true;
+    }
     public Chooser(JFrame frame, boolean isFile) {
         this.frame = frame;
         this.isFile = isFile;
@@ -47,9 +65,11 @@ public class Chooser {
                 if (result == JFileChooser.APPROVE_OPTION) {
                     // Get the file's path
                     filePath = fileChooser.getSelectedFile().getAbsolutePath();
-
                     // Set the file path to the text field
                     filePathField.setText(filePath);
+                    if (usePdfChecker) {
+                        pdfChecker();
+                    }
                 }
             }
         });
@@ -79,6 +99,20 @@ public class Chooser {
         } else {
             openButton.setForeground(Color.BLACK);
             filePathField.setBackground(Color.WHITE);
+        }
+    }
+    public void pdfChecker() {
+        if (!filePath.substring(filePath.length() - 3).equals("pdf")) {
+            changeColors(true);
+            wrong.setVisible(true);
+            warning.setVisible(false);
+            finish.setVisible(false);
+            wrongWarning.setVisible(false);
+            filled = false;
+        } else {
+            changeColors(false);
+            wrong.setVisible(false);
+            filled = true;
         }
     }
 }

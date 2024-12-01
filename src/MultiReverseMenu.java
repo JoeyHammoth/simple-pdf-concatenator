@@ -7,23 +7,29 @@ import java.util.List;
 import java.util.Objects;
 
 public class MultiReverseMenu implements Interactable, MultiInteractable {
-    private Chooser inputChooser = new Chooser(frame, true);
+    private Chooser inputChooser;
     private List<Chooser> inputList = new ArrayList<>();
     private Chooser outputChooser = new Chooser(frame, false);
     private JButton add = new JButton("+");
     private JButton rev = new JButton("Reverse PDF");
+    private JLabel wrong = new JLabel("Selected file is not a pdf.");
     private JLabel warning = new JLabel("Please choose at least one pdf, a location and a name.");
+    private JLabel wrongWarning = new JLabel("Files are not pdfs. Choose " +
+            "at least two pdfs, a location and a name.");
     private JLabel finish = new JLabel("Reversal completed.");
     private JButton back = new JButton("Go back");
     private JTextField field = new JTextField();
     private JLabel title = new JLabel("Reverse Order of Pages for Multiple PDF Files.");
     private MainMenu mainMenu;
+    private boolean showWrong = false;
 
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
     }
 
     public MultiReverseMenu() {
+        inputChooser = new Chooser(frame, true, warning, finish, wrong, wrongWarning);
+
         title.setBounds(150, 0, 300, 50);
         inputChooser.createChooser(25, 50, 180, 50, "Choose PDF");
         add.setBounds(150, 100, 220, 50);
@@ -32,10 +38,16 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
         field.setToolTipText("Fill in name of the file");
         rev.setBounds(150, 250, 220, 50);
         back.setBounds(150, 350, 220, 50);
+        wrong.setBounds(150, 300, 600, 50);
         warning.setBounds(100, 300, 600, 50);
+        wrongWarning.setBounds(50, 300, 1000, 50);
         finish.setBounds(150, 300, 220, 50);
+        wrong.setForeground(Color.RED);
         warning.setForeground(Color.RED);
+        wrongWarning.setForeground(Color.RED);
         warning.setVisible(false);
+        wrong.setVisible(false);
+        wrongWarning.setVisible(false);
         finish.setVisible(false);
 
         add.addActionListener(new ActionListener() {
@@ -54,16 +66,35 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
                 list.add(inputPathOne);
                 String outputPath = outputChooser.getFilePath();
                 String name = field.getText();
+                checkType();
                 if (inputPathOne == null || outputPath == null || name.isEmpty()) {
                     changeFieldColors(true);
-                    warning.setVisible(true);
-                    finish.setVisible(false);
+                    if (showWrong) {
+                        wrongWarning.setVisible(true);
+                        finish.setVisible(false);
+                        warning.setVisible(false);
+                        wrong.setVisible(false);
+                    } else {
+                        wrongWarning.setVisible(false);
+                        finish.setVisible(false);
+                        warning.setVisible(true);
+                        wrong.setVisible(false);
+                    }
                 } else {
-                    MultiReverser reverser = new MultiReverser(list, outputPath, name);
-                    reverser.reverse();
-                    changeFieldColors(false);
-                    finish.setVisible(true);
-                    warning.setVisible(false);
+                    if (showWrong) {
+                        wrongWarning.setVisible(false);
+                        finish.setVisible(false);
+                        warning.setVisible(false);
+                        wrong.setVisible(true);
+                    } else {
+                        MultiReverser reverser = new MultiReverser(list, outputPath, name);
+                        reverser.reverse();
+                        changeFieldColors(false);
+                        wrong.setVisible(false);
+                        warning.setVisible(false);
+                        finish.setVisible(true);
+                        wrongWarning.setVisible(false);
+                    }
                 }
             }
         });
@@ -84,6 +115,8 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
         frame.add(field);
         frame.add(title);
         frame.add(add);
+        frame.add(wrong);
+        frame.add(wrongWarning);
         setVisibility(false);
     }
     public void moveButtons() {
@@ -98,10 +131,12 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
             back.setBounds(150, back.getBounds().y + 50, 220, 50);
             warning.setBounds(100, warning.getBounds().y + 50, 600, 50);
             finish.setBounds(150, finish.getBounds().y + 50, 220, 50);
+            wrong.setBounds(150, wrong.getBounds().y + 50, 600, 50);
+            wrongWarning.setBounds(50, wrongWarning.getBounds().y + 50, 1000, 50);
         }
     }
     public void createInput() {
-        Chooser input = new Chooser(frame, true);
+        Chooser input = new Chooser(frame, true, warning, finish, wrong, wrongWarning);
         if (inputList.isEmpty()) {
             input.createChooser(25, inputChooser.getChooserButton().y + 50, 180,
                     inputChooser.getChooserField().y + 50, "Choose PDF");
@@ -136,6 +171,8 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
             back.setVisible(false);
             field.setVisible(false);
             title.setVisible(false);
+            wrong.setVisible(false);
+            wrongWarning.setVisible(false);
         }
     }
     public void changeFieldColors(boolean input) {
@@ -144,9 +181,26 @@ public class MultiReverseMenu implements Interactable, MultiInteractable {
             outputChooser.changeColors(true);
             field.setBackground(Color.RED);
         } else {
+            for (Chooser chooser : inputList) {
+                chooser.changeColors(false);
+            }
             inputChooser.changeColors(false);
             outputChooser.changeColors(false);
             field.setBackground(Color.WHITE);
         }
+    }
+    public void checkType() {
+        boolean isWrong = false;
+        if (!inputChooser.getFilled()) {
+            inputChooser.changeColors(true);
+            isWrong = true;
+        }
+        for (Chooser chooser : inputList) {
+            if (!chooser.getFilled()) {
+                chooser.changeColors(true);
+                isWrong = true;
+            }
+        }
+        showWrong = isWrong;
     }
 }
