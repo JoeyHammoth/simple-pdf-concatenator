@@ -7,9 +7,18 @@ public class MainMenu implements Interactable{
     private JButton revButton = new JButton("Reverse");
     private JButton mergeButton = new JButton("Even/Odd Merge");
     private JLabel text = new JLabel("Select a PDF action.");
+    private MultiConcatMenu concatMenu = new MultiConcatMenu();
+    private MultiReverseMenu reverseMenu = new MultiReverseMenu();
+    private MergeMenu mergeMenu = new MergeMenu();
+    private boolean containsConMen = false;
+    private boolean containsRevMen = false;
+    private boolean containsMergeMen = false;
+    private MainMenu self;
+
+    public void setSelf(MainMenu self) {
+        this.self = self;
+    }
     public MainMenu() {
-        frame.getContentPane().removeAll();
-        frame.repaint();
     }
     public void createMenu() {
         concatButton.setBounds(150, 200, 220, 50);
@@ -20,24 +29,36 @@ public class MainMenu implements Interactable{
         concatButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MultiConcatMenu concatMenu = new MultiConcatMenu();
-                concatMenu.createMenu();
+                setVisibility(false);
+                if (!containsConMen) {
+                    containsConMen = true;
+                    concatMenu.setMainMenu(self);
+                }
+                concatMenu.setVisibility(true);
             }
         });
 
         revButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MultiReverseMenu reverseMenu = new MultiReverseMenu();
-                reverseMenu.createMenu();
+                setVisibility(false);
+                if (!containsRevMen) {
+                    containsRevMen = true;
+                    reverseMenu.setMainMenu(self);
+                }
+                reverseMenu.setVisibility(true);
             }
         });
 
         mergeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MergeMenu mergeMenu = new MergeMenu();
-                mergeMenu.createMenu();
+                setVisibility(false);
+                if (!containsMergeMen) {
+                    containsMergeMen = true;
+                    mergeMenu.setMainMenu(self);
+                }
+                mergeMenu.setVisibility(true);
             }
         });
 
@@ -48,5 +69,19 @@ public class MainMenu implements Interactable{
         frame.setSize(500, 800);
         frame.setLayout(null);
         frame.setVisible(true);
+    }
+
+    public void setVisibility(boolean input) {
+        if (input) {
+            concatButton.setVisible(true);
+            revButton.setVisible(true);
+            mergeButton.setVisible(true);
+            text.setVisible(true);
+        } else {
+            concatButton.setVisible(false);
+            revButton.setVisible(false);
+            mergeButton.setVisible(false);
+            text.setVisible(false);
+        }
     }
 }

@@ -3,24 +3,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MergeMenu implements Interactable {
-    private Chooser inputChooser1;
-    private Chooser inputChooser2;
-    private Chooser folderChooser;
+    private Chooser inputChooser1 = new Chooser(frame, true);
+    private Chooser inputChooser2 = new Chooser(frame, true);
+    private Chooser folderChooser = new Chooser(frame, false);
     private JButton merge = new JButton("Merge PDF");
     private JLabel warning = new JLabel("Please choose your pdfs and name.");
     private JLabel finish = new JLabel("Merger completed.");
     private JButton back = new JButton("Go back");
     private JTextField field = new JTextField();
     private JLabel title = new JLabel("Merge Even and Odd Pages of PDF Files.");
+    private MainMenu mainMenu;
+
+    public void setMainMenu(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+    }
 
     public MergeMenu() {
-        frame.getContentPane().removeAll();
-        frame.repaint();
-        inputChooser1 = new Chooser(frame, true);
-        inputChooser2 = new Chooser(frame, true);
-        folderChooser = new Chooser(frame, false);
-    }
-    public void createMenu() {
         title.setBounds(150, 0, 300, 50);
         inputChooser1.createChooser(25, 50, 180, 50, "Choose Even PDF");
         inputChooser2.createChooser(25, 100, 180, 100, "Choose Odd PDF");
@@ -55,8 +53,8 @@ public class MergeMenu implements Interactable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                MainMenu mainMenu = new MainMenu();
-                mainMenu.createMenu();
+                setVisibility(false);
+                mainMenu.setVisibility(true);
             }
         });
 
@@ -66,6 +64,27 @@ public class MergeMenu implements Interactable {
         frame.add(finish);
         frame.add(field);
         frame.add(title);
-        frame.setVisible(true);
+        setVisibility(false);
+    }
+    public void setVisibility(boolean input) {
+        if (input) {
+            inputChooser1.setVisibility(true);
+            inputChooser2.setVisibility(true);
+            folderChooser.setVisibility(true);
+            merge.setVisible(true);
+            back.setVisible(true);
+            field.setVisible(true);
+            title.setVisible(true);
+        } else {
+            inputChooser1.setVisibility(false);
+            inputChooser2.setVisibility(false);
+            folderChooser.setVisibility(false);
+            merge.setVisible(false);
+            warning.setVisible(false);
+            finish.setVisible(false);
+            back.setVisible(false);
+            field.setVisible(false);
+            title.setVisible(false);
+        }
     }
 }
