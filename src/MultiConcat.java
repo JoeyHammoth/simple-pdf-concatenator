@@ -3,11 +3,10 @@ import org.apache.pdfbox.multipdf.PDFMergerUtility;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MultiConcat {
-    private List<String> inputList = new ArrayList<>();
+    private List<String> inputList;
     private String outputPdf;
     public MultiConcat(List<String> list, String outputPdf, String name) {
         this.inputList = list;
