@@ -194,5 +194,87 @@ public abstract class AbstractMenu implements Interactable {
         }
         return isWrong;
     }
-
+    public void moveButtons(int count, Chooser outputChooser, JButton function, JLabel warning, JLabel finish,
+                            JButton back, JLabel wrong, JButton add, JTextField field, JLabel wrongWarning,
+                            List<Chooser> inputList) {
+        if (inputList.size() > count) {
+            add.setVisible(false);
+        } else {
+            add.setBounds(150, add.getBounds().y + 50, 220, 50);
+            outputChooser.modifyChooser(25, outputChooser.getChooserButton().y + 50, 180,
+                    outputChooser.getChooserField().y + 50);
+            field.setBounds(50, field.getBounds().y + 50, 400, 30);
+            function.setBounds(150, function.getBounds().y + 50, 220, 50);
+            back.setBounds(150, back.getBounds().y + 50, 220, 50);
+            warning.setBounds(100, warning.getBounds().y + 50, 600, 50);
+            finish.setBounds(150, finish.getBounds().y + 50, 220, 50);
+            wrong.setBounds(150, wrong.getBounds().y + 50, 600, 50);
+            wrongWarning.setBounds(50, wrongWarning.getBounds().y + 50, 1000, 50);
+        }
+    }
+    public void createInput(boolean type, Chooser inputChooser, JLabel warning, JLabel finish, JLabel wrong, JLabel wrongWarning,
+                            List<Chooser> inputList) {
+        Chooser input = new Chooser(frame, true, warning, finish, wrong, wrongWarning);
+        if (type) {
+            if (inputList.isEmpty()) {
+                input.createChooser(25, inputChooser.getChooserButton().y + 50, 180,
+                        inputChooser.getChooserField().y + 50, "Choose PDF");
+            } else {
+                input.createChooser(25, inputList.getLast().getChooserButton().y + 50, 180,
+                        inputList.getLast().getChooserField().y + 50, "Choose PDF");
+            }
+        } else {
+            if (inputList.isEmpty()) {
+                input.createChooser(25, inputChooser.getChooserButton().y + 50, 180,
+                        inputChooser.getChooserField().y + 50, "Choose PDF 3");
+            } else {
+                input.createChooser(25, inputList.getLast().getChooserButton().y + 50, 180,
+                        inputList.getLast().getChooserField().y + 50, "Choose PDF " + (inputList.size() + 3));
+            }
+        }
+        inputList.add(input);
+    }
+    public void wrongWarningSetVisible(JLabel wrongWarning, JLabel finish, JLabel warning, JLabel wrong) {
+        wrongWarning.setVisible(true);
+        finish.setVisible(false);
+        warning.setVisible(false);
+        wrong.setVisible(false);
+    }
+    public void finishSetVisible(JLabel wrongWarning, JLabel finish, JLabel warning, JLabel wrong) {
+        wrongWarning.setVisible(false);
+        finish.setVisible(true);
+        warning.setVisible(false);
+        wrong.setVisible(false);
+    }
+    public void warningSetVisible(JLabel wrongWarning, JLabel finish, JLabel warning, JLabel wrong) {
+        wrongWarning.setVisible(false);
+        finish.setVisible(false);
+        warning.setVisible(true);
+        wrong.setVisible(false);
+    }
+    public void wrongSetVisible(JLabel wrongWarning, JLabel finish, JLabel warning, JLabel wrong) {
+        wrongWarning.setVisible(false);
+        finish.setVisible(false);
+        warning.setVisible(false);
+        wrong.setVisible(true);
+    }
+    public void setImportantBounds(boolean input, JButton function, JLabel warning, JLabel finish, JButton back,
+                                   JLabel wrong, JTextField field, JLabel wrongWarning) {
+        int addition = (input) ? 50 : 0;
+        field.setBounds(50, 200 + addition, 400, 30);
+        field.setToolTipText("Fill in name of the file");
+        function.setBounds(150, 250 + addition, 220, 50);
+        back.setBounds(150, 350 + addition, 220, 50);
+        wrong.setBounds(150, 300 + addition, 600, 50);
+        warning.setBounds(100, 300 + addition, 600, 50);
+        wrongWarning.setBounds(50, 300 + addition, 1000, 50);
+        finish.setBounds(150, 300 + addition, 220, 50);
+        wrong.setForeground(Color.RED);
+        warning.setForeground(Color.RED);
+        wrongWarning.setForeground(Color.RED);
+        finish.setVisible(false);
+        warning.setVisible(false);
+        wrong.setVisible(false);
+        wrongWarning.setVisible(false);
+    }
 }

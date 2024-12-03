@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MergeMenu implements Interactable {
+public class MergeMenu extends AbstractMenu implements Interactable {
     private Chooser inputChooser1;
     private Chooser inputChooser2;
     private Chooser folderChooser = new Chooser(frame, false);
@@ -31,21 +31,7 @@ public class MergeMenu implements Interactable {
         inputChooser1.createChooser(25, 50, 180, 50, "Choose Even PDF");
         inputChooser2.createChooser(25, 100, 180, 100, "Choose Odd PDF");
         folderChooser.createChooser(25, 150, 180, 150, "Choose Folder");
-        field.setBounds(50, 200, 400, 30);
-        field.setToolTipText("Fill in name of the file");
-        merge.setBounds(150, 250, 220, 50);
-        back.setBounds(150, 350, 220, 50);
-        wrong.setBounds(150, 300, 600, 50);
-        warning.setBounds(150, 300, 300, 50);
-        wrongWarning.setBounds(50, 300, 1000, 50);
-        finish.setBounds(150, 300, 220, 50);
-        wrong.setForeground(Color.RED);
-        warning.setForeground(Color.RED);
-        wrongWarning.setForeground(Color.RED);
-        finish.setVisible(false);
-        warning.setVisible(false);
-        wrong.setVisible(false);
-        wrongWarning.setVisible(false);
+        setImportantBounds(false, merge, warning, finish, back, wrong, field, wrongWarning);
 
         merge.addActionListener(new ActionListener() {
             @Override
@@ -53,34 +39,23 @@ public class MergeMenu implements Interactable {
                 String path1 = inputChooser1.getFilePath();
                 String path2 = inputChooser2.getFilePath();
                 String outputPath = folderChooser.getFilePath();
-                checkType();
-                if (path1 == null || path2 == null || outputPath == null) {
-                    changeFieldColors(true);
+                String name = field.getText();
+                showWrong = checkType(inputChooser1, inputChooser2);
+                if (path1 == null || path2 == null || outputPath == null || name.isEmpty()) {
+                    changeFieldColors(true, inputChooser1, inputChooser2, folderChooser, field);
                     if (showWrong) {
-                        wrongWarning.setVisible(true);
-                        finish.setVisible(false);
-                        warning.setVisible(false);
-                        wrong.setVisible(false);
+                        wrongWarningSetVisible(wrongWarning, finish, warning, wrong);
                     } else {
-                        wrongWarning.setVisible(false);
-                        finish.setVisible(false);
-                        warning.setVisible(true);
-                        wrong.setVisible(false);
+                        warningSetVisible(wrongWarning, finish, warning, wrong);
                     }
                 } else {
                     if (showWrong) {
-                        wrongWarning.setVisible(false);
-                        finish.setVisible(false);
-                        warning.setVisible(false);
-                        wrong.setVisible(true);
+                        wrongSetVisible(wrongWarning, finish, warning, wrong);
                     } else {
                         Merger merger = new Merger(path1, path2, outputPath, "output.pdf");
                         merger.merge();
-                        changeFieldColors(false);
-                        wrong.setVisible(false);
-                        warning.setVisible(false);
-                        finish.setVisible(true);
-                        wrongWarning.setVisible(false);
+                        changeFieldColors(false, inputChooser1, inputChooser2, folderChooser, field);
+                        finishSetVisible(wrongWarning, finish, warning, wrong);
                     }
                 }
             }
@@ -89,68 +64,18 @@ public class MergeMenu implements Interactable {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                changeFieldColors(false);
+                changeFieldColors(false, inputChooser1, inputChooser2, folderChooser, field);
                 setVisibility(false);
                 mainMenu.setVisibility(true);
             }
         });
 
-        frame.add(merge);
-        frame.add(back);
-        frame.add(warning);
-        frame.add(finish);
-        frame.add(field);
-        frame.add(title);
-        frame.add(wrong);
-        frame.add(wrongWarning);
+        addToFrame(merge, warning, finish, back, wrong, field, title, wrongWarning);
         setVisibility(false);
     }
+
     public void setVisibility(boolean input) {
-        if (input) {
-            inputChooser1.setVisibility(true);
-            inputChooser2.setVisibility(true);
-            folderChooser.setVisibility(true);
-            merge.setVisible(true);
-            back.setVisible(true);
-            field.setVisible(true);
-            title.setVisible(true);
-        } else {
-            inputChooser1.setVisibility(false);
-            inputChooser2.setVisibility(false);
-            folderChooser.setVisibility(false);
-            merge.setVisible(false);
-            warning.setVisible(false);
-            finish.setVisible(false);
-            back.setVisible(false);
-            field.setVisible(false);
-            title.setVisible(false);
-            wrong.setVisible(false);
-            wrongWarning.setVisible(false);
-        }
-    }
-    public void changeFieldColors(boolean input) {
-        if (input) {
-            inputChooser1.changeColors(true);
-            inputChooser2.changeColors(true);
-            folderChooser.changeColors(true);
-            field.setBackground(Color.RED);
-        } else {
-            inputChooser1.changeColors(false);
-            inputChooser2.changeColors(false);
-            folderChooser.changeColors(false);
-            field.setBackground(Color.WHITE);
-        }
-    }
-    public void checkType() {
-        boolean isWrong = false;
-        if (!inputChooser1.getFilled()) {
-            inputChooser1.changeColors(true);
-            isWrong = true;
-        }
-        if (!inputChooser2.getFilled()) {
-            inputChooser2.changeColors(true);
-            isWrong = true;
-        }
-        showWrong = isWrong;
+        setVisibility(input, inputChooser1, inputChooser2, folderChooser, merge, warning, finish, back, wrong,
+                field, title, wrongWarning);
     }
 }
