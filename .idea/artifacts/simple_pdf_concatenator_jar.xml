@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="simple-pdf-concatenator:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/simple_pdf_concatenator_jar</output-path>
+    <root id="archive" name="simple-pdf-concatenator.jar">
+      <element id="module-output" name="simple-pdf-concatenator" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../pdfbox-app-2.0.32.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
