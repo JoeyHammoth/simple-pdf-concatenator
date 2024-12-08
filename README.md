@@ -1,4 +1,5 @@
 # A Simple PDF Concatenator :page_facing_up:
+<img src="https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/resources/logo.png" alt="drawing" width="100">
 This is a simple PDF concatenator built using Java Swing and Pdfbox. It has 3 different functionalities: merging, reversing and concatenating. This is mostly a side project used for me personally to handle the amount of pdf files that I have generated from scanning a bunch of my college notes. 
 
 # Merging :bookmark_tabs:
@@ -10,9 +11,15 @@ As the name suggests, this reverses the order of the pages for a single PDF file
 # Concatenating :file_folder:
 Again, pretty straightforward. This just basically concatenates two different PDF files. Did this since my scanner can only automatically scan a limited number of pages at a time. 
 
+# Installation #
+[Download the JAR file](https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/simple-pdf-concatenator.jar) \
+[Download for MAC](https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/simple-pdf-concatenator.dmg) \
+[Download for Windows64](https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/simple-pdf-concatenator.zip)
+
+
 # Potential Extensibility Features :chart_with_upwards_trend:
-- Make this application accessible in the web so that you can access it simply by clicking on some button or link. 
-- Potentially make an executable out of this for more convenient access without running through the terminal. 
+- Make this application accessible in the web so that you can access it simply by clicking on some button or link ❎
+- Potentially make an executable out of this for more convenient access without running through the terminal ☑️
 - Use ArrayLists to be able to upload and merge/concatenate more PDFs at once. Haven't figured out the appropriate Swing UI to enable this, however ☑️
 - Make a more convenient file directory system where the last directory is saved and doesn't just reset to some random directory ☑️
 - Utilize some design patterns that could potentially increase the efficiency of the program. Some ideas include using a singleton for each menu class to make sure there is only one instance of each menu instead of several menus overlapping each other ☑️
