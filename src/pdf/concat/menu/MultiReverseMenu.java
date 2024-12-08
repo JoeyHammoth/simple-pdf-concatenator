@@ -1,3 +1,8 @@
+package pdf.concat.menu;
+
+import pdf.concat.function.*;
+import pdf.concat.Chooser;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,7 +12,7 @@ import java.util.List;
 public class MultiReverseMenu extends AbstractMenu implements Interactable {
     private Chooser inputChooser;
     private List<Chooser> inputList = new ArrayList<>();
-    private Chooser outputChooser = new Chooser(frame, false);
+    private Chooser outputChooser = new Chooser(Interactable.frame, false);
     private JButton add = new JButton("+");
     private JButton rev = new JButton("Reverse PDF");
     private JLabel wrong = new JLabel("Selected file is not a pdf.");
@@ -26,7 +31,7 @@ public class MultiReverseMenu extends AbstractMenu implements Interactable {
     }
 
     public MultiReverseMenu() {
-        inputChooser = new Chooser(frame, true, warning, finish, wrong, wrongWarning);
+        inputChooser = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
 
         title.setBounds(150, 0, 300, 50);
         inputChooser.createChooser(25, 50, 180, 50, "Choose PDF");
@@ -82,7 +87,7 @@ public class MultiReverseMenu extends AbstractMenu implements Interactable {
         });
 
         super.addToFrame(rev, warning, finish, back, wrong, field, title, wrongWarning);
-        frame.add(add);
+        Interactable.frame.add(add);
         setVisibility(false);
     }
     public void setVisibility(boolean input) {

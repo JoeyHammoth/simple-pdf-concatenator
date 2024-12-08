@@ -1,3 +1,7 @@
+package pdf.concat.menu;
+
+import pdf.concat.Chooser;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
@@ -5,14 +9,14 @@ import java.util.List;
 public abstract class AbstractMenu implements Interactable {
     public void addToFrame(JButton function, JLabel warning, JLabel finish, JButton back, JLabel wrong,
                            JTextField field, JLabel title, JLabel wrongWarning) {
-        frame.add(function);
-        frame.add(back);
-        frame.add(warning);
-        frame.add(finish);
-        frame.add(field);
-        frame.add(title);
-        frame.add(wrong);
-        frame.add(wrongWarning);
+        Interactable.frame.add(function);
+        Interactable.frame.add(back);
+        Interactable.frame.add(warning);
+        Interactable.frame.add(finish);
+        Interactable.frame.add(field);
+        Interactable.frame.add(title);
+        Interactable.frame.add(wrong);
+        Interactable.frame.add(wrongWarning);
     }
     public void setVisibility(boolean input, Chooser inputChooser, Chooser outputChooser,
                               JButton rev, JLabel warning, JLabel finish, JButton back, JLabel wrong, JButton add,
@@ -213,7 +217,7 @@ public abstract class AbstractMenu implements Interactable {
     }
     public void createInput(boolean type, Chooser inputChooser, JLabel warning, JLabel finish, JLabel wrong, JLabel wrongWarning,
                             List<Chooser> inputList) {
-        Chooser input = new Chooser(frame, true, warning, finish, wrong, wrongWarning);
+        Chooser input = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
         if (type) {
             if (inputList.isEmpty()) {
                 input.createChooser(25, inputChooser.getChooserButton().y + 50, 180,

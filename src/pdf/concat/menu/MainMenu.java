@@ -1,3 +1,5 @@
+package pdf.concat.menu;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,14 +73,14 @@ public class MainMenu implements Interactable {
             }
         });
 
-        frame.add(concatButton);
-        frame.add(revButton);
-        frame.add(mergeButton);
-        frame.add(exitButton);
-        frame.add(text);
-        frame.setSize(500, 800);
-        frame.setLayout(null);
-        frame.setVisible(true);
+        Interactable.frame.add(concatButton);
+        Interactable.frame.add(revButton);
+        Interactable.frame.add(mergeButton);
+        Interactable.frame.add(exitButton);
+        Interactable.frame.add(text);
+        Interactable.frame.setSize(500, 800);
+        Interactable.frame.setLayout(null);
+        Interactable.frame.setVisible(true);
     }
 
     public void setVisibility(boolean input) {

@@ -1,3 +1,5 @@
+package pdf.concat.function;
+
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
 
 import java.io.File;

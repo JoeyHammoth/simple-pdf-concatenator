@@ -1,3 +1,8 @@
+package pdf.concat.menu;
+
+import pdf.concat.Chooser;
+import pdf.concat.function.*;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -5,13 +10,13 @@ import java.awt.event.ActionListener;
 public class MergeMenu extends AbstractMenu implements Interactable {
     private Chooser inputChooser1;
     private Chooser inputChooser2;
-    private Chooser folderChooser = new Chooser(frame, false);
+    private Chooser folderChooser = new Chooser(Interactable.frame, false);
     private JButton merge = new JButton("Merge PDF");
     private JLabel wrong = new JLabel("Selected file is not a pdf.");
     private JLabel warning = new JLabel("Please choose your pdfs and name.");
     private JLabel wrongWarning = new JLabel("Files are not pdfs. Choose " +
             "at least two pdfs, a location and a name.");
-    private JLabel finish = new JLabel("Merger completed.");
+    private JLabel finish = new JLabel("pdf.concat.function.Merger completed.");
     private JButton back = new JButton("Go back");
     private JTextField field = new JTextField();
     private JLabel title = new JLabel("Merge Even and Odd Pages of PDF Files.");
@@ -23,8 +28,8 @@ public class MergeMenu extends AbstractMenu implements Interactable {
     }
 
     public MergeMenu() {
-        inputChooser1 = new Chooser(frame, true, warning, finish, wrong, wrongWarning);
-        inputChooser2 = new Chooser(frame, true, warning, finish, wrong, wrongWarning);
+        inputChooser1 = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
+        inputChooser2 = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
 
         title.setBounds(150, 0, 300, 50);
         inputChooser1.createChooser(25, 50, 180, 50, "Choose Even PDF");

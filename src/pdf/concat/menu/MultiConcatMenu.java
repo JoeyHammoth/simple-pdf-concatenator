@@ -1,3 +1,8 @@
+package pdf.concat.menu;
+
+import pdf.concat.function.*;
+import pdf.concat.Chooser;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +14,7 @@ public class MultiConcatMenu extends AbstractMenu implements Interactable {
     private Chooser inputChooser1;
     private Chooser inputChooser2;
     private List<Chooser> inputList = new ArrayList<>();
-    private Chooser folderChooser = new Chooser(frame, false);
+    private Chooser folderChooser = new Chooser(Interactable.frame, false);
     private JButton add = new JButton("+");
     private JButton con = new JButton("Concatenate PDF");
     private JLabel wrong = new JLabel("Selected file is not a pdf.");
@@ -28,8 +33,8 @@ public class MultiConcatMenu extends AbstractMenu implements Interactable {
     }
 
     public MultiConcatMenu() {
-        inputChooser1 = new Chooser(frame, true, warning, finish, wrong, wrongWarning);
-        inputChooser2 = new Chooser(frame, true, warning, finish, wrong, wrongWarning);
+        inputChooser1 = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
+        inputChooser2 = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
 
         title.setBounds(150, 0, 220, 50);
         inputChooser1.createChooser(25, 50, 180, 50, "Choose PDF 1");
@@ -92,7 +97,7 @@ public class MultiConcatMenu extends AbstractMenu implements Interactable {
         });
 
         super.addToFrame(con, warning, finish, back, wrong, field, title, wrongWarning);
-        frame.add(add);
+        Interactable.frame.add(add);
         setVisibility(false);
     }
 
