@@ -48,5 +48,5 @@ In the concatenation menu, you can add the all the files that you want to concat
 - Save file directory information so that when the user go from the main menu to the a feature, the fields are the same as when the user last left them ☑️
 - Alerting the user if a non-pdf file is selected ☑️
 
-# Citations # 
-The project uses [packr](https://github.com/libgdx/packr) to create the appropriate application bundles needed to build the Windows and MacOS apps. Apache PDFBox was also used for implementing the different functionalities. More project details and documentation can be found in the [wiki](https://github.com/JoeyHammoth/simple-pdf-concatenator/wiki).
+# Citations & License ⚖️ # 
+The project uses [packr](https://github.com/libgdx/packr) to create the appropriate application bundles needed to build the Windows and MacOS apps. Apache PDFBox was also used for implementing the different functionalities. More project details and documentation can be found in the [wiki](https://github.com/JoeyHammoth/simple-pdf-concatenator/wiki). This project is licensed under the MIT license. 
