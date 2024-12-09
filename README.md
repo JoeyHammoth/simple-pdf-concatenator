@@ -31,4 +31,4 @@ Latest release can be found [here](https://github.com/JoeyHammoth/simple-pdf-con
 - Alerting the user if a non-pdf file is selected ☑️
 
 # Citations # 
-The project uses [packr](https://github.com/libgdx/packr) to create the appropriate application bundles needed to build the Windows and MacOS apps. Apache PDFBox was also used for implementing the different functionalities. 
+The project uses [packr](https://github.com/libgdx/packr) to create the appropriate application bundles needed to build the Windows and MacOS apps. Apache PDFBox was also used for implementing the different functionalities. More project details and documentation can be found in the [wiki](https://github.com/JoeyHammoth/simple-pdf-concatenator/wiki).
