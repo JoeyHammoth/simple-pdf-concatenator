@@ -13,8 +13,8 @@ As the name suggests, this reverses the order of the pages for a single PDF file
 ## Concatenating :file_folder: ##
 Concatenates two different PDF files. 
 
-# Installation #
-Latest release can be found [here](https://github.com/JoeyHammoth/simple-pdf-concatenator/releases/tag/1.0.0).
+# Installation ⬇️ #
+Latest release can be found [here](https://github.com/JoeyHammoth/simple-pdf-concatenator/releases/tag/1.0.0). \
 [Download the JAR file](https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/simple-pdf-concatenator.jar) \
 [Download for MAC](https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/simple-pdf-concatenator.dmg) \
 [Download for Windows64](https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/simple-pdf-concatenator.zip)
