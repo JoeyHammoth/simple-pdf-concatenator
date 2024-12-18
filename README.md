@@ -19,6 +19,10 @@ Latest release can be found [here](https://github.com/JoeyHammoth/simple-pdf-con
 [Download for MAC](https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/simple-pdf-concatenator.dmg) \
 [Download for Windows64](https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/simple-pdf-concatenator.zip)
 
+To run the JAR executable, run the following command on the terminal in the same directory as the executable:
+```bash
+   java -jar simple-pdf-concatenator.jar
+```
 # Usage 🖱️ #
 
 ## Main Menu 🎋 ##
@@ -37,6 +41,96 @@ In the reverse menu, you can add the all the files that you want to reverse, the
 <img src="https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/images/con-menu.png" alt="concat-menu" width="200">
 In the concatenation menu, you can add the all the files that you want to concatenate together, the output directory and output name.
 
+# Project Structure 📁 #
+```
+simple-pdf-concatenator
+├── LICENSE
+├── README.md
+├── images
+│   ├── con-menu.png
+│   ├── main-menu.png
+│   ├── merge-menu.png
+│   ├── reverse-menu.png
+│   └── simple-pdf-concatenator-image.png
+├── installations
+│   ├── resources
+│   │   └── logo.png
+│   ├── simple-pdf-concatenator.dmg
+│   ├── simple-pdf-concatenator.jar
+│   └── simple-pdf-concatenator.zip
+├── out
+│   ├── artifacts
+│   │   └── simple_pdf_concatenator_jar
+│   │       └── simple-pdf-concatenator.jar
+│   └── production
+│       ├── pdf-concatenator
+│       │   ├── Chooser$1.class
+│       │   ├── Chooser.class
+│       │   ├── Concat.class
+│       │   ├── ConcatMenu$1.class
+│       │   ├── ConcatMenu$2.class
+│       │   ├── ConcatMenu.class
+│       │   ├── Interactable.class
+│       │   ├── Main.class
+│       │   ├── MainMenu$1.class
+│       │   ├── MainMenu$2.class
+│       │   ├── MainMenu$3.class
+│       │   ├── MainMenu.class
+│       │   ├── MergeMenu$1.class
+│       │   ├── MergeMenu$2.class
+│       │   ├── MergeMenu.class
+│       │   ├── Merger.class
+│       │   ├── ReverseMenu$1.class
+│       │   ├── ReverseMenu$2.class
+│       │   ├── ReverseMenu.class
+│       │   └── Reverser.class
+│       └── simple-pdf-concatenator
+│           ├── AbstractMenu.class
+│           ├── Chooser$1.class
+│           ├── Chooser.class
+│           ├── Interactable.class
+│           ├── META-INF
+│           │   └── MANIFEST.MF
+│           ├── Main.class
+│           ├── MainMenu$1.class
+│           ├── MainMenu$2.class
+│           ├── MainMenu$3.class
+│           ├── MainMenu$4.class
+│           ├── MainMenu.class
+│           ├── MergeMenu$1.class
+│           ├── MergeMenu$2.class
+│           ├── MergeMenu.class
+│           ├── Merger.class
+│           ├── MultiConcat.class
+│           ├── MultiConcatMenu$1.class
+│           ├── MultiConcatMenu$2.class
+│           ├── MultiConcatMenu$3.class
+│           ├── MultiConcatMenu.class
+│           ├── MultiReverseMenu$1.class
+│           ├── MultiReverseMenu$2.class
+│           ├── MultiReverseMenu$3.class
+│           ├── MultiReverseMenu.class
+│           └── MultiReverser.class
+├── simple-pdf-concatenator.iml
+└── src
+    ├── META-INF
+    │   └── MANIFEST.MF
+    ├── Main.java
+    └── pdf
+        └── concat
+            ├── Chooser.java
+            ├── function
+            │   ├── Merger.java
+            │   ├── MultiConcat.java
+            │   └── MultiReverser.java
+            └── menu
+                ├── AbstractMenu.java
+                ├── Interactable.java
+                ├── MainMenu.java
+                ├── MergeMenu.java
+                ├── MultiConcatMenu.java
+                └── MultiReverseMenu.java
+```
 # Potential Extensibility Features :chart_with_upwards_trend:
 - Make this application accessible in the web so that you can access it simply by clicking on some button or link ❎
 - Potentially make an executable out of this for more convenient access without running through the terminal ☑️
