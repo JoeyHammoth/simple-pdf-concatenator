@@ -4,6 +4,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * MainMenu class is the main menu for the PDF concatenation program.
+ * It contains buttons for concatenation, reversing, merging, and exiting the program.
+ * It also contains the MultiConcatMenu, MultiReverseMenu, and MergeMenu classes.
+ * The MultiConcatMenu class is for concatenating multiple PDFs.
+ * The MultiReverseMenu class is for reversing the order of multiple PDFs.
+ * The MergeMenu class is for merging two PDFs together.
+ */
 public class MainMenu implements Interactable {
     private JButton concatButton = new JButton("Concatenate");
     private JButton revButton = new JButton("Reverse");
@@ -18,11 +26,35 @@ public class MainMenu implements Interactable {
     private boolean containsMergeMen = false;
     private MainMenu self;
 
+    /**
+     * Sets the MainMenu object to itself.
+     */
     public void setSelf(MainMenu self) {
         this.self = self;
     }
+
+    /**
+     * Constructor for the MainMenu class.
+     */
     public MainMenu() {
     }
+
+    /**
+     * Creates the main menu for the PDF concatenation program.
+     * The main menu contains buttons for concatenation, reversing, merging, and exiting the program.
+     * The main menu also contains the MultiConcatMenu, MultiReverseMenu, and MergeMenu classes.
+     * The MultiConcatMenu class is for concatenating multiple PDFs.
+     * The MultiReverseMenu class is for reversing the order of multiple PDFs.
+     * The MergeMenu class is for merging two PDFs together.
+     * The main menu is displayed on the screen.
+     * The main menu is not visible by default.
+     * The main menu is set to visible when the program is run.
+     * The main menu is set to invisible when the program is exited.
+     * The main menu is set to invisible when the MultiConcatMenu, MultiReverseMenu, or MergeMenu is displayed.
+     * The main menu is set to visible when the MultiConcatMenu, MultiReverseMenu, or MergeMenu is exited.
+     *
+     *
+     */
     public void createMenu() {
         exitButton.setBounds(150, 250, 220, 50);
         concatButton.setBounds(150, 200, 220, 50);
@@ -83,6 +115,12 @@ public class MainMenu implements Interactable {
         Interactable.frame.setVisible(true);
     }
 
+
+    /**
+     * Sets the visibility of the main menu.
+     *
+     * @param input boolean value to set the visibility of the main menu
+     */
     public void setVisibility(boolean input) {
         if (input) {
             exitButton.setVisible(true);

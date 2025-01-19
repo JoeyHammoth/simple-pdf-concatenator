@@ -7,15 +7,35 @@ import org.apache.pdfbox.pdmodel.PDPageTree;
 import java.io.File;
 import java.io.IOException;
 
+/**
+ * This class is responsible for merging two PDFs into one.
+ * The even pages of the first PDF are merged with the odd pages of the second PDF.
+ * The merged PDF is saved to the output directory.
+ *
+  */
 public class Merger {
     private String inputPdfEvenPages;
     private String inputPdfOddPages;
     private String outputPdf;
+
+    /**
+     * Constructor to initialize the input PDFs and the output PDF.
+     *
+     * @param inputPdfEvenPages The path to the PDF containing even pages.
+     * @param inputPdfOddPages The path to the PDF containing odd pages.
+     * @param outputPdf The path to save the merged PDF.
+     * @param name The name of the merged PDF.
+     */
     public Merger(String inputPdfEvenPages, String inputPdfOddPages, String outputPdf, String name) {
         this.inputPdfEvenPages = inputPdfEvenPages;
         this.inputPdfOddPages = inputPdfOddPages;
         this.outputPdf = outputPdf + "/" + name;
     }
+
+    /**
+     * Merges the even pages of the first PDF with the odd pages of the second PDF.
+     * The merged PDF is saved to the output directory.
+     */
     public void merge() {
         try {
             // Load the even-pages PDF
@@ -39,6 +59,13 @@ public class Merger {
         }
     }
 
+    /**
+     * Merges the even pages of the first PDF with the odd pages of the second PDF.
+     *
+     * @param evenPdfDoc The PDF containing even pages.
+     * @param oddPdfDoc The PDF containing odd pages.
+     * @return The merged PDF.
+     */
     private static PDDocument getPdDocument(PDDocument evenPdfDoc, PDDocument oddPdfDoc) {
         PDDocument mergedPdfDoc = new PDDocument();
 

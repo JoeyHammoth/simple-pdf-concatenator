@@ -7,6 +7,12 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * MergeMenu class is a class that extends AbstractMenu and implements Interactable.
+ * It is a menu that allows the user to merge two pdf files into one pdf file.
+ * The user can choose the two pdf files, the location of the output pdf file, and the name of the output pdf file.
+ * The user can also go back to the main menu.
+ */
 public class MergeMenu extends AbstractMenu implements Interactable {
     private Chooser inputChooser1;
     private Chooser inputChooser2;
@@ -23,10 +29,23 @@ public class MergeMenu extends AbstractMenu implements Interactable {
     private MainMenu mainMenu;
     private boolean showWrong = false;
 
+    /**
+     * Sets the main menu of the merge menu.
+     * @param mainMenu the main menu of the merge menu
+     */
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
     }
 
+    /**
+     * Constructor for the MergeMenu class. It initializes the inputChooser1, inputChooser2,
+     * folderChooser, merge, wrong, warning, wrongWarning, finish, back, field, and title.
+     * It also sets the action listeners for the merge and back buttons.
+     * The merge button merges the two pdf files into one pdf file.
+     * The back button goes back to the main menu.
+     * The visibility of the merge menu is set to false.
+     *
+     */
     public MergeMenu() {
         inputChooser1 = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
         inputChooser2 = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
@@ -78,6 +97,10 @@ public class MergeMenu extends AbstractMenu implements Interactable {
         setVisibility(false);
     }
 
+    /**
+     * Sets the visibility of the merge menu.
+     * @param input the boolean value to set the visibility of the merge menu
+     */
     public void setVisibility(boolean input) {
         setVisibility(input, inputChooser1, inputChooser2, folderChooser, merge, warning, finish, back, wrong,
                 field, title, wrongWarning);

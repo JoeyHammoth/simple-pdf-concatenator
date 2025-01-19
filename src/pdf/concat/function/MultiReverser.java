@@ -8,6 +8,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * MultiReverser class is used to reverse the pages of multiple PDFs and save them in a new directory.
+ * The output PDFs are named as per the input PDFs with an index appended to the name.
+ */
 public class MultiReverser {
     private String outputPdf;
     private String name;
@@ -18,6 +22,11 @@ public class MultiReverser {
         this.name = name;
     }
 
+    /**
+     * Reverse the pages of multiple PDFs and save them in a new directory.
+     * The output PDFs are named as per the input PDFs with an index appended to the name.
+     *
+     */
     public void reverse() {
         for (int i = 0; i < pdfList.size(); i++) {
             String outputPdfLoop = outputPdf + name + i + ".pdf";

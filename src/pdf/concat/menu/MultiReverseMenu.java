@@ -9,6 +9,25 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class that represents the menu for reversing the order of pages for multiple pdfs.
+ * It allows the user to choose multiple pdfs, a location and a name for the reversed pdf.
+ * It also allows the user to go back to the main menu.
+ * It has a title, a warning label, a finish label, a back button, a wrong label, a text field, a wrong warning label,
+ * a reverse button, an add button, two input choosers and a folder chooser.
+ * It has a main menu object to go back to the main menu.
+ * It has a list of input choosers to allow the user to choose multiple pdfs.
+ * It has a boolean to show the wrong warning label.
+ * It has a method to set the main menu object.
+ * It has a constructor to create the menu.
+ * It has a method to set the visibility of the menu.
+ * It has a method to reverse the pdfs.
+ * It has a method to go back to the main menu.
+ * It has a method to add an input chooser.
+ * It has a method to check the type of the pdfs.
+ * It has a method to change the colors of the fields.
+ *
+ */
 public class MultiReverseMenu extends AbstractMenu implements Interactable {
     private Chooser inputChooser;
     private List<Chooser> inputList = new ArrayList<>();
@@ -26,10 +45,17 @@ public class MultiReverseMenu extends AbstractMenu implements Interactable {
     private MainMenu mainMenu;
     private boolean showWrong = false;
 
+    /**
+     * Sets the main menu object.
+     * @param mainMenu the main menu object
+     */
     public void setMainMenu(MainMenu mainMenu) {
         this.mainMenu = mainMenu;
     }
 
+    /**
+     * Creates the menu.
+     */
     public MultiReverseMenu() {
         inputChooser = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
 
@@ -90,6 +116,11 @@ public class MultiReverseMenu extends AbstractMenu implements Interactable {
         Interactable.frame.add(add);
         setVisibility(false);
     }
+
+    /**
+     * Sets the visibility of the menu.
+     * @param input the boolean to set the visibility
+     */
     public void setVisibility(boolean input) {
         setVisibility(input, inputChooser, outputChooser, rev, warning, finish, back, wrong, add, field, title,
                 wrongWarning, inputList);

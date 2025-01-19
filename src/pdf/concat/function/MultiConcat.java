@@ -7,6 +7,10 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * MultiConcat class is used to concatenate multiple PDF files into a single PDF file.
+ * The input is a list of PDF files and the output is a single PDF file.
+ */
 public class MultiConcat {
     private List<String> inputList;
     private String outputPdf;
@@ -14,6 +18,13 @@ public class MultiConcat {
         this.inputList = list;
         this.outputPdf = outputPdf + "/" + name + ".pdf";
     }
+
+    /**
+     * Concatenate the PDF files.
+     *
+     * @throws FileNotFoundException if the file is not found
+     *
+     */
     public void concatenate() throws FileNotFoundException {
         PDFMergerUtility pdfMerger = new PDFMergerUtility();
         for (String file : inputList) {

@@ -6,7 +6,24 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Abstract class that contains methods that are used in all menu classes.
+ * It contains methods that are used to add buttons to the frame, set their visibility, change field colors,
+ * check if the type is correct, move buttons, create input, set warnings visible and set important bounds.
+ */
 public abstract class AbstractMenu implements Interactable {
+
+    /**
+     * Adds text to the frame.
+     * @param function JButton that is used to perform the function.
+     * @param warning JLabel that is used to display warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param back JButton that is used to go back to the main menu.
+     * @param wrong JLabel that is used to display wrong message.
+     * @param field JTextField that is used to get the name of the file.
+     * @param title JLabel that is used to display the title of the function.
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     */
     public void addToFrame(JButton function, JLabel warning, JLabel finish, JButton back, JLabel wrong,
                            JTextField field, JLabel title, JLabel wrongWarning) {
         Interactable.frame.add(function);
@@ -18,6 +35,25 @@ public abstract class AbstractMenu implements Interactable {
         Interactable.frame.add(wrong);
         Interactable.frame.add(wrongWarning);
     }
+
+    /**
+     * Changes the visibility of the components for MultiReverse Menu.
+     * If input is true, it sets the visibility of the input components to true and the rest to false.
+     * If input is false, it sets the visibility of the input components to false and the rest to false.
+     * @param input boolean that determines if the input components should be visible.
+     * @param inputChooser Chooser that is used to choose the input file.
+     * @param outputChooser Chooser that is used to choose the output file.
+     * @param rev JButton that is used to reverse the order of the input files.
+     * @param warning JLabel that is used to display warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param back JButton that is used to go back to the main menu.
+     * @param wrong JLabel that is used to display wrong message.
+     * @param add JButton that is used to add more input files.
+     * @param field JTextField that is used to get the name of the file.
+     * @param title JLabel that is used to display the title of the function.
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     * @param inputList List of Choosers that are used to choose the input files.
+     */
     public void setVisibility(boolean input, Chooser inputChooser, Chooser outputChooser,
                               JButton rev, JLabel warning, JLabel finish, JButton back, JLabel wrong, JButton add,
                               JTextField field, JLabel title, JLabel wrongWarning, List<Chooser> inputList) {
@@ -49,6 +85,26 @@ public abstract class AbstractMenu implements Interactable {
             wrongWarning.setVisible(false);
         }
     }
+
+    /**
+     * Changes the visibility of the components for MultiConcat Menu.
+     * If input is true, it sets the visibility of the input components to true and the rest to false.
+     * If input is false, it sets the visibility of the input components to false and the rest to false.
+     * @param input boolean that determines if the input components should be visible.
+     * @param inputChooser1 Chooser that is used to choose the input file.
+     * @param inputChooser2 Chooser that is used to choose the input file.
+     * @param warning JLabel that is used to display warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param back JButton that is used to go back to the main menu.
+     * @param wrong JLabel that is used to display wrong message.
+     * @param add JButton that is used to add more input files.
+     * @param field JTextField that is used to get the name of the file.
+     * @param title JLabel that is used to display the title of the function.
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     * @param inputList List of Choosers that are used to choose the input files.
+     * @param folderChooser Chooser that is used to choose the folder where the output file will be saved.
+     * @param con JButton that is used to concatenate the input files.
+     */
     public void setVisibility(boolean input, Chooser inputChooser1, Chooser inputChooser2, Chooser folderChooser,
                               JButton con, JLabel warning, JLabel finish, JButton back, JLabel wrong, JButton add,
                               JTextField field, JLabel title, JLabel wrongWarning, List<Chooser> inputList) {
@@ -82,6 +138,24 @@ public abstract class AbstractMenu implements Interactable {
             wrongWarning.setVisible(false);
         }
     }
+
+    /**
+     * Changes the visibility of the components for MultiMerge Menu.
+     * If input is true, it sets the visibility of the input components to true and the rest to false.
+     * If input is false, it sets the visibility of the input components to false and the rest to false.
+     * @param input boolean that determines if the input components should be visible.
+     * @param inputChooser1 Chooser that is used to choose the input file.
+     * @param inputChooser2 Chooser that is used to choose the input file.
+     * @param folderChooser Chooser that is used to choose the folder where the output file will be saved.
+     * @param merge JButton that is used to merge the input files.
+     * @param warning JLabel that is used to display warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param back JButton that is used to go back to the main menu.
+     * @param wrong JLabel that is used to display wrong message.
+     * @param field JTextField that is used to get the name of the file.
+     * @param title JLabel that is used to display the title of the function.
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     */
     public void setVisibility(boolean input, Chooser inputChooser1, Chooser inputChooser2, Chooser folderChooser,
                               JButton merge, JLabel warning, JLabel finish, JButton back, JLabel wrong,
                               JTextField field, JLabel title, JLabel wrongWarning) {
@@ -107,6 +181,19 @@ public abstract class AbstractMenu implements Interactable {
             wrongWarning.setVisible(false);
         }
     }
+
+    /**
+     * Changes the field colors based on the input boolean.
+     * If input is true, it changes the colors of the inputChooser and outputChooser to red and the field to red.
+     * If input is false, it changes the colors of the inputList, inputChooser and outputChooser
+     * to white and the field to white.
+     *
+     * @param input boolean that determines if the colors should be changed to red.
+     * @param inputChooser Chooser that is used to choose the input file.
+     * @param outputChooser Chooser that is used to choose the output file.
+     * @param field JTextField that is used to get the name of the file.
+     * @param inputList List of Choosers that are used to choose the input files.
+     */
     public void changeFieldColors(boolean input, Chooser inputChooser, Chooser outputChooser,
                                   JTextField field, List<Chooser> inputList) {
         if (input) {
@@ -122,6 +209,21 @@ public abstract class AbstractMenu implements Interactable {
             field.setBackground(Color.WHITE);
         }
     }
+
+    /**
+     * Changes the field colors based on the input boolean.
+     * If input is true, it changes the colors of the inputChooser1, inputChooser2 and folderChooser to red
+     * and the field to red.
+     * If input is false, it changes the colors of the inputList, inputChooser1, inputChooser2 and folderChooser
+     * to white and the field to white.
+     *
+     * @param input boolean that determines if the colors should be changed to red.
+     * @param inputChooser1 Chooser that is used to choose the input file.
+     * @param inputChooser2 Chooser that is used to choose the input file.
+     * @param folderChooser Chooser that is used to choose the folder where the output file will be saved.
+     * @param field JTextField that is used to get the name of the file.
+     * @param inputList List of Choosers that are used to choose the input files.
+     */
     public void changeFieldColors(boolean input, Chooser inputChooser1, Chooser inputChooser2, Chooser folderChooser,
                                   JTextField field, List<Chooser> inputList) {
         if (input) {
@@ -139,6 +241,20 @@ public abstract class AbstractMenu implements Interactable {
             field.setBackground(Color.WHITE);
         }
     }
+
+    /**
+     * Changes the field colors based on the input boolean.
+     * If input is true, it changes the colors of the inputChooser1, inputChooser2 and folderChooser to red
+     * and the field to red.
+     * If input is false, it changes the colors of the inputChooser1, inputChooser2 and folderChooser
+     * to white and the field to white.
+     *
+     * @param input boolean that determines if the colors should be changed to red.
+     * @param inputChooser1 Chooser that is used to choose the input file.
+     * @param inputChooser2 Chooser that is used to choose the input file.
+     * @param folderChooser Chooser that is used to choose the folder where the output file will be saved.
+     * @param field JTextField that is used to get the name of the file.
+     */
     public void changeFieldColors(boolean input, Chooser inputChooser1, Chooser inputChooser2, Chooser folderChooser,
                                   JTextField field) {
         if (input) {
@@ -153,6 +269,14 @@ public abstract class AbstractMenu implements Interactable {
             field.setBackground(Color.WHITE);
         }
     }
+
+    /**
+     * Check if fields are filled. If they are not, change their colors to red and return true.
+     * If they are filled, return false. Used for MultiReverse Menu.
+     * @param inputChooser1 Chooser that is used to choose the input file.
+     * @param inputChooser2 Chooser that is used to choose the input file.
+     * @return boolean that determines if the fields are filled.
+     */
     public boolean checkType(Chooser inputChooser1, Chooser inputChooser2) {
         boolean isWrong = false;
         if (!inputChooser1.getFilled()) {
@@ -165,6 +289,14 @@ public abstract class AbstractMenu implements Interactable {
         }
         return isWrong;
     }
+
+    /**
+     * Check if fields are filled. If they are not, change their colors to red and return true.
+     * If they are filled, return false. Used for MultiConcat Menu.
+     * @param inputChooser Chooser that is used to choose the input file.
+     * @param inputList List of Choosers that are used to choose the input files.
+     * @return boolean that determines if the fields are filled.
+     */
     public boolean checkType(Chooser inputChooser, List<Chooser> inputList) {
         boolean isWrong = false;
         if (!inputChooser.getFilled()) {
@@ -179,6 +311,15 @@ public abstract class AbstractMenu implements Interactable {
         }
         return isWrong;
     }
+
+    /**
+     * Check if fields are filled. If they are not, change their colors to red and return true.
+     * If they are filled, return false. Used for MultiMerge Menu.
+     * @param inputChooser1 Chooser that is used to choose the input file.
+     * @param inputChooser2 Chooser that is used to choose the input file.
+     * @param inputList List of Choosers that are used to choose the input files.
+     * @return boolean that determines if the fields are filled.
+     */
     public boolean checkType(Chooser inputChooser1, Chooser inputChooser2, List<Chooser> inputList) {
         boolean isWrong = false;
         if (!inputChooser1.getFilled()) {
@@ -197,6 +338,25 @@ public abstract class AbstractMenu implements Interactable {
         }
         return isWrong;
     }
+
+    /**
+     * Moves the buttons and fields based on the count of the inputList.
+     * If the inputList size is greater than the count, it sets the add button to invisible.
+     * If the inputList size is less than the count, it moves the buttons and fields down.
+     * Used for MultiConcat Menu.
+     *
+     * @param count int that determines the number of input files that can be added.
+     * @param outputChooser Chooser that is used to choose the output file.
+     * @param function JButton that is used to perform the function.
+     * @param warning JLabel that is used to display warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param back JButton that is used to go back to the main menu.
+     * @param wrong JLabel that is used to display wrong message.
+     * @param add JButton that is used to add more input files.
+     * @param field JTextField that is used to get the name of the file.
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     * @param inputList List of Choosers that are used to choose the input files.
+     */
     public void moveButtons(int count, Chooser outputChooser, JButton function, JLabel warning, JLabel finish,
                             JButton back, JLabel wrong, JButton add, JTextField field, JLabel wrongWarning,
                             List<Chooser> inputList) {
@@ -215,6 +375,19 @@ public abstract class AbstractMenu implements Interactable {
             wrongWarning.setBounds(50, wrongWarning.getBounds().y + 50, 1000, 50);
         }
     }
+
+    /**
+     * Create PDF Chooser based on the type boolean. If type is true, it creates the first inputChooser.
+     * If type is false, it creates the inputChooser after the last inputChooser in the inputList.
+     *
+     * @param type boolean that determines if the inputChooser is the first one.
+     * @param inputChooser Chooser that is used to choose the input file.
+     * @param warning JLabel that is used to display warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param wrong JLabel that is used to display wrong message.
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     * @param inputList List of Choosers that are used to choose the input files.
+     */
     public void createInput(boolean type, Chooser inputChooser, JLabel warning, JLabel finish, JLabel wrong, JLabel wrongWarning,
                             List<Chooser> inputList) {
         Chooser input = new Chooser(Interactable.frame, true, warning, finish, wrong, wrongWarning);
@@ -237,30 +410,84 @@ public abstract class AbstractMenu implements Interactable {
         }
         inputList.add(input);
     }
+
+    /**
+     * Set the visibility of the warnings based on the input boolean. If input is true, it sets the wrongWarning
+     * to visible and the rest to invisible. If input is false, it sets the wrongWarning to invisible.
+     *
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param warning JLabel that is used to display warning.
+     * @param wrong JLabel that is used to display wrong message.
+     */
     public void wrongWarningSetVisible(JLabel wrongWarning, JLabel finish, JLabel warning, JLabel wrong) {
         wrongWarning.setVisible(true);
         finish.setVisible(false);
         warning.setVisible(false);
         wrong.setVisible(false);
     }
+
+    /**
+     * Set the visibility of the finish message based on the input boolean. If input is true, it sets the finish
+     * to visible and the rest to invisible. If input is false, it sets the finish to invisible.
+     *
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param warning JLabel that is used to display warning.
+     * @param wrong JLabel that is used to display wrong message.
+     */
     public void finishSetVisible(JLabel wrongWarning, JLabel finish, JLabel warning, JLabel wrong) {
         wrongWarning.setVisible(false);
         finish.setVisible(true);
         warning.setVisible(false);
         wrong.setVisible(false);
     }
+
+    /**
+     * Set the visibility of the warning message based on the input boolean. If input is true, it sets the warning
+     * to visible and the rest to invisible. If input is false, it sets the warning to invisible.
+     *
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param warning JLabel that is used to display warning.
+     * @param wrong JLabel that is used to display wrong message.
+     */
     public void warningSetVisible(JLabel wrongWarning, JLabel finish, JLabel warning, JLabel wrong) {
         wrongWarning.setVisible(false);
         finish.setVisible(false);
         warning.setVisible(true);
         wrong.setVisible(false);
     }
+
+    /**
+     * Set the visibility of the wrong message based on the input boolean. If input is true, it sets the wrong
+     * to visible and the rest to invisible. If input is false, it sets the wrong to invisible.
+     *
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param warning JLabel that is used to display warning.
+     * @param wrong JLabel that is used to display wrong message.
+     */
     public void wrongSetVisible(JLabel wrongWarning, JLabel finish, JLabel warning, JLabel wrong) {
         wrongWarning.setVisible(false);
         finish.setVisible(false);
         warning.setVisible(false);
         wrong.setVisible(true);
     }
+
+    /**
+     * Set the bounds of the components based on the input boolean. If input is true, it sets the bounds of the
+     * components to the important bounds. If input is false, it sets the bounds of the components to the normal bounds.
+     *
+     * @param input boolean that determines if the bounds should be set to the important bounds.
+     * @param function JButton that is used to perform the function.
+     * @param warning JLabel that is used to display warning.
+     * @param finish JLabel that is used to display finish message.
+     * @param back JButton that is used to go back to the main menu.
+     * @param wrong JLabel that is used to display wrong message.
+     * @param field JTextField that is used to get the name of the file.
+     * @param wrongWarning JLabel that is used to display wrong warning.
+     */
     public void setImportantBounds(boolean input, JButton function, JLabel warning, JLabel finish, JButton back,
                                    JLabel wrong, JTextField field, JLabel wrongWarning) {
         int addition = (input) ? 50 : 0;
