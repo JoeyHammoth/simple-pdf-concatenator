@@ -1,6 +1,7 @@
 # A Simple PDF Concatenator :page_facing_up:
 <img src="https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/installations/resources/logo.png" alt="logo" width="100">
-This is a simple PDF concatenator built using Java Swing and Pdfbox. It has 3 different functionalities: merging, reversing and concatenating. The primarily goal is to create a simple-to-us user interface that is capable of running these three functionalities and enable ease-of-use in handling pdf files without resorting to expensive commercial products such as Acrobat. This application is available for download for MacOS and Windows. The JAR executable is also available. 
+
+This is a simple PDF concatenator built using Java Swing and Pdfbox. It has 3 different functionalities: merging, reversing and concatenating. The primarily goal is to create a simple-to-us user interface that is capable of running these three functionalities and enable ease-of-use in handling pdf files without resorting to expensive commercial products such as Acrobat. This application is available for download for MacOS and Windows. The JAR executable is also available. The Javadoc is available [here](https://joeyhammoth.github.io/simple-pdf-concatenator/).
 
 # Features 🌆 #
 
@@ -131,6 +132,8 @@ simple-pdf-concatenator
                 ├── MultiConcatMenu.java
                 └── MultiReverseMenu.java
 ```
+<img src="https://github.com/JoeyHammoth/simple-pdf-concatenator/blob/main/diagram.png" alt="concat-menu">
+
 # Potential Extensibility Features :chart_with_upwards_trend:
 - Make this application accessible in the web so that you can access it simply by clicking on some button or link ❎
 - Potentially make an executable out of this for more convenient access without running through the terminal ☑️
